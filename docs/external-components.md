@@ -17,7 +17,7 @@ This list covers parts required for a complete ENKU Clock prototype that are **n
 | Speaker | PUI Audio **AS04004PR-R** | LOCK / VERIFY | 40 mm round, 4 Ω, 3 W rated, 4 W max; acoustic/enclosure test required |
 | Battery prototype | YDL **605080 3000 mAh** or equivalent custom pack | LOCK / VERIFY | Protected 1S LiPo, target 3-wire JST-PH 2.0 with 10 kΩ NTC |
 | Enclosure | ENKU Clock printed enclosure | OPEN | Final Rev A CAD / fit validation |
-| Encoder knob | Custom ENKU knob | OPEN | Must fit EC11E15244G1 shaft and enclosure |
+| Encoder knob | Custom ENKU 3D-printed knob | LOCK / PRINT | Printed part; must fit EC11E15244G1 shaft and enclosure |
 | Snooze key/cap | Custom ENKU top key | OPEN | Mechanical force/travel tuning after prototype |
 | Wake-light diffuser | Custom diffuser/light pipe | OPEN | Optical test with six 2700 K LEDs |
 | Fasteners | M2 service screws / inserts as required | OPEN | Freeze with enclosure CAD |
@@ -143,7 +143,7 @@ Before closing the Rev A prototype kit, confirm that the following physically ex
 - [ ] Wake LED GH 2-pin harness
 - [ ] Speaker PH 2-pin harness
 - [ ] battery PH 3-pin harness / correctly terminated pack
-- [ ] encoder knob
+- [ ] 3D-printed encoder knob
 - [ ] Snooze key/cap
 - [ ] wake-light diffuser
 - [ ] enclosure + service fasteners
