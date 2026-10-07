@@ -1,0 +1,43 @@
+name: Hardware check
+
+on:
+  workflow_dispatch:
+
+jobs:
+  kicad:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install KiCad 10
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y software-properties-common
+          sudo add-apt-repository --yes ppa:kicad/kicad-10.0-releases
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends kicad
+          kicad-cli version
+
+      - name: Mainboard strict DRC
+        run: |
+          set -euo pipefail
+          mkdir -p reports
+          kicad-cli pcb drc --refill-zones --severity-error --exit-code-violations             -o reports/mainboard-drc.rpt             hardware/mainboard/mainboard-reva.kicad_pcb
+
+      - name: Daughterboard DRC
+        run: |
+          set -euo pipefail
+          for board in             hardware/daughterboards/encoder/encoder-board-reva.kicad_pcb             hardware/daughterboards/snooze/snooze-board-reva.kicad_pcb             hardware/daughterboards/wake-led/wake-led-board-reva.kicad_pcb
+          do
+            name="$(basename "$board" .kicad_pcb)"
+            kicad-cli pcb drc --refill-zones --severity-error --exit-code-violations               -o "reports/$name-drc.rpt" "$board"
+          done
+
+      - name: Upload reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: enku-clock-hardware-reports
+          path: reports/
+          if-no-files-found: ignore

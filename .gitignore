@@ -1,0 +1,17 @@
+# KiCad local / generated files
+*.bak
+*.bck
+*.kicad_prl
+*.kicad_pro-bak
+*-backups/
+_autosave-*
+*.lck
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Generated manufacturing output
+production/
+build/
+dist/
