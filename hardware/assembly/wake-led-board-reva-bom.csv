@@ -1,0 +1,4 @@
+Designator,Qty,Manufacturer,MPN,Description,Footprint,Populate
+J1,1,JST,SM02B-GHS-TB(LF)(SN),GH 1.25mm 2-pin right-angle SMD,JST_GH_SM02B-GHS-TB_1x02-1MP_P1.25mm_Horizontal,YES
+D1 D2 D3 D4 D5 D6,6,Nichia,NFSW757G-V3,3030 warm-white LED 2700K,Nichia_NFSW757G_V3,YES
+R1 R2 R3 R4 R5 R6,6,Generic,56R 1% 0603,56 ohm current-setting resistor 0603,R_0603_1608Metric,YES

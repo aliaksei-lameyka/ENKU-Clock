@@ -1,0 +1,4 @@
+Designator,Qty,Manufacturer,MPN,Description,Footprint,Populate
+J1,1,JST,SM05B-GHS-TB(LF)(SN),GH 1.25mm 5-pin right-angle SMD,JST_GH_SM05B-GHS-TB_1x05-1MP_P1.25mm_Horizontal,YES
+SW1,1,ALPS Alpine,EC11E15244G1,11mm rotary encoder 30 detents/15 pulses with push switch,RotaryEncoder_Alps_EC11E-Switch_Vertical_H20mm,YES
+H1 H2,2,,,M2 mounting hole,2.2mm drill,NO

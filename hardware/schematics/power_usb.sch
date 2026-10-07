@@ -1,0 +1,451 @@
+EESchema Schematic File Version 4
+LIBS:ENKU_Clock
+EELAYER 29 0
+EELAYER END
+$Descr A4 11693 8268
+Sheet 1 1
+Title "Power & USB"
+Date "2026-10-05"
+Rev "Rev A.2"
+Comp "ENKU"
+Comment1 "Clock v0.3"
+Comment2 "Detailed power, protection and battery monitor"
+Comment3 ""
+Comment4 ""
+$EndDescr
+Text Notes 700 550 0 90 ~ 18
+USB-C INPUT + ESD
+$Comp
+L ENKU_Clock:USB_C_SIMPLE J1
+U 1 1 A2000001
+P 1300 1700
+F 0 "J1" H 1250 2300 50 0000 C CNN
+F 1 "TYPE-C-31-M-12" H 1300 1100 50 0000 C CNN
+	1    1300 1700
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	500 1350 350 1350
+Text GLabel 350 1350 0 50 Input ~ 0
+VBUS_USB
+Wire Wire Line
+	500 2050 350 2050
+Text GLabel 350 2050 0 50 Input ~ 0
+GND
+Wire Wire Line
+	2100 1550 2400 1550
+Wire Wire Line
+	2100 1650 2400 1650
+$Comp
+L ENKU_Clock:USBLC6_2SC6 U7
+U 1 1 A2000004
+P 3150 1600
+F 0 "U7" H 3150 2100 50 0000 C CNN
+F 1 "USBLC6-2SC6" H 3150 1100 50 0000 C CNN
+	1    3150 1600
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	2400 1550 2400 1450
+Wire Wire Line
+	2400 1450 2400 1000
+Wire Wire Line
+	2400 1000 3150 1000
+Wire Wire Line
+	2400 1650 2400 1750
+Wire Wire Line
+	2400 1750 2400 2200
+Wire Wire Line
+	2400 2200 3150 2200
+Wire Wire Line
+	3900 1450 4300 1450
+Text GLabel 4300 1450 2 50 Input ~ 0
+USB_D+
+Wire Wire Line
+	3900 1750 4300 1750
+Text GLabel 4300 1750 2 50 Input ~ 0
+USB_D-
+Wire Wire Line
+	2400 1600 2250 1600
+Text GLabel 2250 1600 0 50 Input ~ 0
+GND
+Wire Wire Line
+	3900 1600 4050 1600
+Text GLabel 4050 1600 2 50 Input ~ 0
+VBUS_USB
+$Comp
+L Device:R R1
+U 1 1 A2000002
+P 4850 1850
+F 0 "R1" H 4920 1896 50 0000 L CNN
+F 1 "5.1k CC1" H 4920 1805 50 0000 L CNN
+	1    4850 1850
+	1 0 0 -1
+$EndComp
+$Comp
+L Device:R R2
+U 1 1 A2000003
+P 5350 1850
+F 0 "R2" H 5420 1896 50 0000 L CNN
+F 1 "5.1k CC2" H 5420 1805 50 0000 L CNN
+	1    5350 1850
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	2100 1800 4850 1800
+Wire Wire Line
+	2100 1900 5350 1900
+Wire Wire Line
+	4850 2000 4850 2150
+Wire Wire Line
+	5350 2000 5350 2150
+Wire Wire Line
+	4850 2150 5350 2150
+Text GLabel 5100 2150 3 50 Input ~ 0
+GND
+$Comp
+L Device:R RSH1
+U 1 1 A2000005
+P 1300 2550
+F 0 "RSH1" V 1093 2550 50 0000 C CNN
+F 1 "1M" V 1184 2550 50 0000 C CNN
+	1    1300 2550
+	0 1 1 0
+$EndComp
+$Comp
+L Device:C CSH1
+U 1 1 A2000006
+P 1300 2900
+F 0 "CSH1" V 1048 2900 50 0000 C CNN
+F 1 "1nF" V 1139 2900 50 0000 C CNN
+	1    1300 2900
+	0 1 1 0
+$EndComp
+Wire Wire Line
+	950 2550 1150 2550
+Wire Wire Line
+	950 2900 1150 2900
+Wire Wire Line
+	950 2550 950 2900
+Text GLabel 950 2700 0 50 Input ~ 0
+USB_SHIELD
+Wire Wire Line
+	1450 2550 1650 2550
+Wire Wire Line
+	1450 2900 1650 2900
+Wire Wire Line
+	1650 2550 1650 2900
+Text GLabel 1650 2700 2 50 Input ~ 0
+GND
+$Comp
+L Device:C C1
+U 1 1 A2000007
+P 5900 1600
+F 0 "C1" H 6015 1646 50 0000 L CNN
+F 1 "1uF/10V" H 6015 1555 50 0000 L CNN
+	1    5900 1600
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	5900 1450 5900 1300
+Text GLabel 5900 1300 1 50 Input ~ 0
+VBUS_USB
+Wire Wire Line
+	5900 1750 5900 1900
+Text GLabel 5900 1900 3 50 Input ~ 0
+GND
+
+Text Notes 700 3500 0 90 ~ 18
+CHARGER / POWER PATH
+$Comp
+L ENKU_Clock:BQ24074 U2
+U 1 1 A2000010
+P 4500 4300
+F 0 "U2" H 4500 5200 50 0000 C CNN
+F 1 "BQ24074RGTR" H 4500 3400 50 0000 C CNN
+	1    4500 4300
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	5500 4100 6000 4100
+Text GLabel 6000 4100 2 50 Input ~ 0
+VBUS_USB
+Wire Wire Line
+	5500 4500 6000 4500
+Text GLabel 6000 4500 2 50 Input ~ 0
+SYS_RAW
+Wire Wire Line
+	5500 4600 6000 4600
+Text GLabel 6000 4600 2 50 Input ~ 0
+SYS_RAW
+Wire Wire Line
+	3500 3800 3050 3800
+Text GLabel 3050 3800 0 50 Input ~ 0
+BAT_NTC
+Wire Wire Line
+	3500 3950 3050 3950
+Text GLabel 3050 3950 0 50 Input ~ 0
+BAT+
+Wire Wire Line
+	3500 4050 3050 4050
+Text GLabel 3050 4050 0 50 Input ~ 0
+BAT+
+Wire Wire Line
+	3500 4200 3050 4200
+Text GLabel 3050 4200 0 50 Input ~ 0
+GND
+Wire Wire Line
+	3500 4350 3050 4350
+Text GLabel 3050 4350 0 50 Input ~ 0
+GND
+Wire Wire Line
+	3500 4450 3050 4450
+Text GLabel 3050 4450 0 50 Input ~ 0
+SYS_RAW
+Wire Wire Line
+	3500 4600 3050 4600
+Text GLabel 3050 4600 0 50 Input ~ 0
+POWER_GOOD
+Wire Wire Line
+	3500 4800 3050 4800
+Text GLabel 3050 4800 0 50 Input ~ 0
+GND
+Wire Wire Line
+	5500 4800 6000 4800
+Text GLabel 6000 4800 2 50 Input ~ 0
+CHG_STATUS
+$Comp
+L Device:R R_ISET
+U 1 1 A2000011
+P 6400 3700
+F 0 "R_ISET" V 6193 3700 50 0000 C CNN
+F 1 "1.13k / 0.8A" V 6284 3700 50 0000 C CNN
+	1    6400 3700
+	0 1 1 0
+$EndComp
+Wire Wire Line
+	5500 3700 6250 3700
+Wire Wire Line
+	6550 3700 6850 3700
+Text GLabel 6850 3700 2 50 Input ~ 0
+GND
+$Comp
+L Device:R R_TMR
+U 1 1 A2000012
+P 6400 3950
+F 0 "R_TMR" V 6193 3950 50 0000 C CNN
+F 1 "46.4k / 6.25h" V 6284 3950 50 0000 C CNN
+	1    6400 3950
+	0 1 1 0
+$EndComp
+Wire Wire Line
+	5500 3950 6250 3950
+Wire Wire Line
+	6550 3950 6850 3950
+Text GLabel 6850 3950 2 50 Input ~ 0
+GND
+$Comp
+L Device:C C2
+U 1 1 A2000013
+P 7000 4500
+F 0 "C2" H 7115 4546 50 0000 L CNN
+F 1 "4.7uF/10V" H 7115 4455 50 0000 L CNN
+	1    7000 4500
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	7000 4350 7000 4200
+Text GLabel 7000 4200 1 50 Input ~ 0
+SYS_RAW
+Wire Wire Line
+	7000 4650 7000 4800
+Text GLabel 7000 4800 3 50 Input ~ 0
+GND
+$Comp
+L Device:C C3
+U 1 1 A2000014
+P 2400 4000
+F 0 "C3" H 2515 4046 50 0000 L CNN
+F 1 "4.7uF/10V" H 2515 3955 50 0000 L CNN
+	1    2400 4000
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	2400 3850 2400 3700
+Text GLabel 2400 3700 1 50 Input ~ 0
+BAT+
+Wire Wire Line
+	2400 4150 2400 4300
+Text GLabel 2400 4300 3 50 Input ~ 0
+GND
+Text Notes 2900 5200 0 50 ~ 0
+EN1=SYS_RAW, EN2=GND -> 500mA input current mode. ISET=1.13k gives ~0.8A charge ceiling; input limit wins on ordinary USB.
+Text Notes 2900 5350 0 50 ~ 0
+ITERM open = internal default termination. TS uses battery 10k NTC. CHG/PGOOD are open-drain and get pull-ups on MCU sheet.
+
+$Comp
+L ENKU_Clock:CONN_3 J2
+U 1 1 A2000020
+P 1700 4550
+F 0 "J2" H 1600 4950 50 0000 C CNN
+F 1 "J_BAT / JST-PH 3P" H 1700 4150 50 0000 C CNN
+	1    1700 4550
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	1250 4425 800 4425
+Text GLabel 800 4425 0 50 Input ~ 0
+BAT+
+Wire Wire Line
+	1250 4550 800 4550
+Text GLabel 800 4550 0 50 Input ~ 0
+GND
+Wire Wire Line
+	1250 4675 800 4675
+Text GLabel 800 4675 0 50 Input ~ 0
+BAT_NTC
+
+Text Notes 700 5700 0 90 ~ 18
+3.3V RAIL + BATTERY ADC
+$Comp
+L ENKU_Clock:TPS62840_DLC U3
+U 1 1 A2000030
+P 4550 6500
+F 0 "U3" H 4550 7200 50 0000 C CNN
+F 1 "TPS62840DLCR" H 4550 5800 50 0000 C CNN
+	1    4550 6500
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	3700 6200 3250 6200
+Text GLabel 3250 6200 0 50 Input ~ 0
+SYS_RAW
+Wire Wire Line
+	3700 6400 3250 6400
+Text GLabel 3250 6400 0 50 Input ~ 0
+GND
+Wire Wire Line
+	3700 6600 3250 6600
+Text GLabel 3250 6600 0 50 Input ~ 0
+SYS_RAW
+Wire Wire Line
+	3700 6800 3250 6800
+Text GLabel 3250 6800 0 50 Input ~ 0
+GND
+Wire Wire Line
+	5400 6200 5750 6200
+$Comp
+L Device:L L1
+U 1 1 A2000031
+P 6050 6200
+F 0 "L1" V 6240 6200 50 0000 C CNN
+F 1 "2.2uH" V 6149 6200 50 0000 C CNN
+	1    6050 6200
+	0 -1 -1 0
+$EndComp
+Wire Wire Line
+	5750 6200 5900 6200
+Wire Wire Line
+	6200 6200 6800 6200
+Text GLabel 6800 6200 2 50 Input ~ 0
++3V3
+Wire Wire Line
+	5400 6400 6550 6400
+Wire Wire Line
+	6550 6400 6550 6200
+Wire Wire Line
+	5400 6600 5750 6600
+Text GLabel 5750 6600 2 50 Input ~ 0
+GND
+Wire Wire Line
+	5400 6800 5750 6800
+Text GLabel 5750 6800 2 50 Input ~ 0
+GND
+$Comp
+L Device:C C4
+U 1 1 A2000032
+P 2850 6500
+F 0 "C4" H 2965 6546 50 0000 L CNN
+F 1 "4.7uF" H 2965 6455 50 0000 L CNN
+	1    2850 6500
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	2850 6350 2850 6200
+Text GLabel 2850 6200 1 50 Input ~ 0
+SYS_RAW
+Wire Wire Line
+	2850 6650 2850 6800
+Text GLabel 2850 6800 3 50 Input ~ 0
+GND
+$Comp
+L Device:C C5
+U 1 1 A2000033
+P 7200 6500
+F 0 "C5" H 7315 6546 50 0000 L CNN
+F 1 "10uF" H 7315 6455 50 0000 L CNN
+	1    7200 6500
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	7200 6350 7200 6200
+Text GLabel 7200 6200 1 50 Input ~ 0
++3V3
+Wire Wire Line
+	7200 6650 7200 6800
+Text GLabel 7200 6800 3 50 Input ~ 0
+GND
+$Comp
+L Device:R R10
+U 1 1 A2000040
+P 8500 6200
+F 0 "R10" V 8293 6200 50 0000 C CNN
+F 1 "1M 1%" V 8384 6200 50 0000 C CNN
+	1    8500 6200
+	0 1 1 0
+$EndComp
+$Comp
+L Device:R R11
+U 1 1 A2000041
+P 9200 6650
+F 0 "R11" H 9270 6696 50 0000 L CNN
+F 1 "330k 1%" H 9270 6605 50 0000 L CNN
+	1    9200 6650
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	8100 6200 8350 6200
+Text GLabel 8100 6200 0 50 Input ~ 0
+BAT+
+Wire Wire Line
+	8650 6200 9200 6200
+Wire Wire Line
+	9200 6200 9200 6500
+Text GLabel 9450 6200 2 50 Input ~ 0
+BAT_ADC
+Wire Wire Line
+	9200 6200 9450 6200
+Wire Wire Line
+	9200 6800 9200 7000
+Text GLabel 9200 7000 3 50 Input ~ 0
+GND
+$Comp
+L Device:C C10
+U 1 1 A2000042
+P 9700 6650
+F 0 "C10" H 9815 6696 50 0000 L CNN
+F 1 "100nF" H 9815 6605 50 0000 L CNN
+	1    9700 6650
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	9700 6500 9700 6200
+Wire Wire Line
+	9700 6200 9200 6200
+Wire Wire Line
+	9700 6800 9700 7000
+Text GLabel 9700 7000 3 50 Input ~ 0
+GND
+Text Notes 7900 7350 0 50 ~ 0
+Battery divider is intentionally always-on: 1M+330k draws ~3.2uA at 4.2V, far less costly than an extra switched-divider stage.
+$EndSCHEMATC
