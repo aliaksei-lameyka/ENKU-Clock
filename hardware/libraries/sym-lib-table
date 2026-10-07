@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "ENKU_Clock")(type "Legacy")(uri "${KIPRJMOD}/ENKU_Clock.lib")(options "")(descr "ENKU Clock local symbols"))
+)

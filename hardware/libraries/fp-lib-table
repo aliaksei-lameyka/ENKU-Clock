@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "ENKU_Clock")(type "KiCad")(uri "${KIPRJMOD}/ENKU_Clock.pretty")(options "")(descr "ENKU Clock local verified footprints"))
+)
