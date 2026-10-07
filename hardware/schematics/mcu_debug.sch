@@ -1,0 +1,369 @@
+EESchema Schematic File Version 4
+LIBS:ENKU_Clock
+EELAYER 29 0
+EELAYER END
+$Descr A4 11693 8268
+Sheet 1 1
+Title "MCU & Debug"
+Date "2026-10-05"
+Rev "Rev A.1"
+Comp "ENKU"
+Comment1 "Clock v0.3"
+Comment2 "GPIO map corrected to physical WROOM-1 pins"
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L ENKU_Clock:ESP32_S3_WROOM_1_N8 U1
+U 1 1 A3000001
+P 5200 3600
+F 0 "U1" H 5200 4900 50 0000 C CNN
+F 1 "ESP32-S3-WROOM-1-N8" H 5200 2200 50 0000 C CNN
+	1    5200 3600
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	3950 2800 3500 2800
+Text GLabel 3500 2800 0 50 Input ~ 0
++3V3
+Wire Wire Line
+	3950 2700 3500 2700
+Text GLabel 3500 2700 0 50 Input ~ 0
+GND
+Wire Wire Line
+	3950 3100 3500 3100
+Text GLabel 3500 3100 0 50 Input ~ 0
+RTC_INT
+Wire Wire Line
+	3950 3200 3500 3200
+Text GLabel 3500 3200 0 50 Input ~ 0
+SNOOZE_SW
+Wire Wire Line
+	3950 3300 3500 3300
+Text GLabel 3500 3300 0 50 Input ~ 0
+ENC_A
+Wire Wire Line
+	3950 3400 3500 3400
+Text GLabel 3500 3400 0 50 Input ~ 0
+ENC_B
+Wire Wire Line
+	3950 3500 3500 3500
+Text GLabel 3500 3500 0 50 Input ~ 0
+EPD_RST
+Wire Wire Line
+	3950 3600 3500 3600
+Text GLabel 3500 3600 0 50 Input ~ 0
+EPD_BUSY
+Wire Wire Line
+	3950 3700 3500 3700
+Text GLabel 3500 3700 0 50 Input ~ 0
+WAKE_LED_PWM
+Wire Wire Line
+	3950 3800 3500 3800
+Text GLabel 3500 3800 0 50 Input ~ 0
+FRONTLIGHT_PWM
+Wire Wire Line
+	3950 3900 3500 3900
+Text GLabel 3500 3900 0 50 Input ~ 0
+ENC_SW
+
+$Comp
+L Device:R R_USB_DM
+U 1 1 A3000100
+P 3450 4000
+F 0 "R_USB_DM" V 3243 4000 50 0000 C CNN
+F 1 "22R" V 3334 4000 50 0000 C CNN
+	1    3450 4000
+	0 1 1 0
+$EndComp
+Wire Wire Line
+	3600 4000 3950 4000
+Wire Wire Line
+	3300 4000 2950 4000
+Text GLabel 2950 4000 0 50 Input ~ 0
+USB_D-
+$Comp
+L Device:R R_USB_DP
+U 1 1 A3000101
+P 3450 4100
+F 0 "R_USB_DP" V 3550 4100 50 0000 C CNN
+F 1 "22R" V 3650 4100 50 0000 C CNN
+	1    3450 4100
+	0 1 1 0
+$EndComp
+Wire Wire Line
+	3600 4100 3950 4100
+Wire Wire Line
+	3300 4100 2950 4100
+Text GLabel 2950 4100 0 50 Input ~ 0
+USB_D+
+Wire Wire Line
+	6450 2700 6900 2700
+Text GLabel 6900 2700 2 50 Input ~ 0
+I2C_SDA
+Wire Wire Line
+	6450 2800 6900 2800
+Text GLabel 6900 2800 2 50 Input ~ 0
+I2C_SCL
+Wire Wire Line
+	6450 2900 6900 2900
+Text GLabel 6900 2900 2 50 Input ~ 0
+EPD_SCK
+Wire Wire Line
+	6450 3000 6900 3000
+Text GLabel 6900 3000 2 50 Input ~ 0
+EPD_MOSI
+Wire Wire Line
+	6450 3100 6900 3100
+Text GLabel 6900 3100 2 50 Input ~ 0
+EPD_CS
+Wire Wire Line
+	6450 3200 6900 3200
+Text GLabel 6900 3200 2 50 Input ~ 0
+EPD_DC
+Wire Wire Line
+	6450 3400 6900 3400
+Text GLabel 6900 3400 2 50 Input ~ 0
+CHG_STATUS
+Wire Wire Line
+	6450 3500 6900 3500
+Text GLabel 6900 3500 2 50 Input ~ 0
+POWER_GOOD
+Wire Wire Line
+	6450 3800 6900 3800
+Text GLabel 6900 3800 2 50 Input ~ 0
+I2S_BCLK
+Wire Wire Line
+	6450 3900 6900 3900
+Text GLabel 6900 3900 2 50 Input ~ 0
+I2S_LRCLK
+Wire Wire Line
+	6450 4000 6900 4000
+Text GLabel 6900 4000 2 50 Input ~ 0
+I2S_DOUT
+Wire Wire Line
+	6450 4100 6900 4100
+Text GLabel 6900 4100 2 50 Input ~ 0
+AMP_SD
+Text GLabel 5550 4950 3 50 Input ~ 0
+BAT_ADC
+Text Notes 900 650 0 60 ~ 0
+GPIO Rev A: 4 RTC_INT, 5 SNOOZE, 6/7 encoder A/B, 8 encoder press, 9/10 I2C, 11-16 EPD, 17/18 lights, 19/20 USB, 35-38 audio, 47/48 charger status.
+Text Notes 900 7000 0 50 ~ 0
+GPIO0/3/45/46 are preserved as straps; GPIO39-42 JTAG and GPIO43-44 UART0 remain unallocated to product functions.
+Text Notes 900 7150 0 50 ~ 0
+Rev A.2: EN RC, BOOT pull-up, USB 22R series resistors, charger-status pull-ups and 3V3 bulk capacitors added. BAT_ADC_EN removed.
+
+Text Notes 800 900 0 70 ~ 12
+MCU SUPPLY / RESET / STRAPS
+$Comp
+L Device:R R_EN
+U 1 1 A3000110
+P 2700 1700
+F 0 "R_EN" H 2770 1746 50 0000 L CNN
+F 1 "10k" H 2770 1655 50 0000 L CNN
+	1    2700 1700
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	2700 1550 2700 1400
+Text GLabel 2700 1400 1 50 Input ~ 0
++3V3
+Wire Wire Line
+	2700 1850 2700 2000
+Wire Wire Line
+	2700 2000 3950 2950
+$Comp
+L Device:C C_EN
+U 1 1 A3000111
+P 2200 2150
+F 0 "C_EN" H 2315 2196 50 0000 L CNN
+F 1 "1uF" H 2315 2105 50 0000 L CNN
+	1    2200 2150
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	2200 2000 2700 2000
+Wire Wire Line
+	2200 2300 2200 2450
+Text GLabel 2200 2450 3 50 Input ~ 0
+GND
+$Comp
+L Device:R R_BOOT
+U 1 1 A3000112
+P 7600 3550
+F 0 "R_BOOT" H 7670 3596 50 0000 L CNN
+F 1 "10k" H 7670 3505 50 0000 L CNN
+	1    7600 3550
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	7600 3400 7600 3250
+Text GLabel 7600 3250 1 50 Input ~ 0
++3V3
+Wire Wire Line
+	7600 3700 6450 3700
+Text Notes 7850 3700 0 45 ~ 0
+GPIO0 BOOT test pad/button to GND
+$Comp
+L Device:C C_MCU1
+U 1 1 A3000120
+P 8300 2550
+F 0 "C_MCU1" H 8415 2596 50 0000 L CNN
+F 1 "100nF" H 8415 2505 50 0000 L CNN
+	1    8300 2550
+	1 0 0 -1
+$EndComp
+$Comp
+L Device:C C_MCU2
+U 1 1 A3000121
+P 8900 2550
+F 0 "C_MCU2" H 9015 2596 50 0000 L CNN
+F 1 "10uF" H 9015 2505 50 0000 L CNN
+	1    8900 2550
+	1 0 0 -1
+$EndComp
+$Comp
+L Device:C C_MCU3
+U 1 1 A3000122
+P 9500 2550
+F 0 "C_MCU3" H 9615 2596 50 0000 L CNN
+F 1 "100uF low-ESR" H 9615 2505 50 0000 L CNN
+	1    9500 2550
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	8300 2400 8300 2250
+Wire Wire Line
+	8900 2400 8900 2250
+Wire Wire Line
+	9500 2400 9500 2250
+Wire Wire Line
+	8300 2250 9500 2250
+Text GLabel 8900 2250 1 50 Input ~ 0
++3V3
+Wire Wire Line
+	8300 2700 8300 2850
+Wire Wire Line
+	8900 2700 8900 2850
+Wire Wire Line
+	9500 2700 9500 2850
+Wire Wire Line
+	8300 2850 9500 2850
+Text GLabel 8900 2850 3 50 Input ~ 0
+GND
+$Comp
+L Device:R R_CHG_PU
+U 1 1 A3000130
+P 8300 4300
+F 0 "R_CHG_PU" H 8370 4346 50 0000 L CNN
+F 1 "10k" H 8370 4255 50 0000 L CNN
+	1    8300 4300
+	1 0 0 -1
+$EndComp
+$Comp
+L Device:R R_PG_PU
+U 1 1 A3000131
+P 9000 4300
+F 0 "R_PG_PU" H 9070 4346 50 0000 L CNN
+F 1 "10k" H 9070 4255 50 0000 L CNN
+	1    9000 4300
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	8300 4150 8300 4000
+Wire Wire Line
+	9000 4150 9000 4000
+Text GLabel 8650 4000 1 50 Input ~ 0
++3V3
+Wire Wire Line
+	8300 4450 8300 4600
+Wire Wire Line
+	9000 4450 9000 4600
+Text GLabel 8300 4600 3 50 Input ~ 0
+CHG_STATUS
+Text GLabel 9000 4600 3 50 Input ~ 0
+POWER_GOOD
+Text Notes 8100 5000 0 45 ~ 0
+CHG/PGOOD are open-drain; external 10k pull-ups ensure defined logic in deep sleep.
+
+Text Notes 7600 5350 0 70 ~ 12
+DEBUG / PRODUCTION TEST
+$Comp
+L ENKU_Clock:CONN_10 JDBG1
+U 1 1 A3000200
+P 9100 6050
+F 0 "JDBG1" H 9000 6700 50 0000 C CNN
+F 1 "Tag-Connect / 10P pads" H 9100 5400 50 0000 C CNN
+	1    9100 6050
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	8650 5600 8200 5600
+Text GLabel 8200 5600 0 50 Input ~ 0
++3V3
+Wire Wire Line
+	8650 5700 8200 5700
+Text GLabel 8200 5700 0 50 Input ~ 0
+GND
+Wire Wire Line
+	8650 5800 8200 5800
+Text GLabel 8200 5800 0 50 Input ~ 0
+EN
+Wire Wire Line
+	8650 5900 8200 5900
+Text GLabel 8200 5900 0 50 Input ~ 0
+BOOT0
+Wire Wire Line
+	8650 6000 8200 6000
+Text GLabel 8200 6000 0 50 Input ~ 0
+UART_TX
+Wire Wire Line
+	8650 6100 8200 6100
+Text GLabel 8200 6100 0 50 Input ~ 0
+UART_RX
+Wire Wire Line
+	8650 6200 8200 6200
+Text GLabel 8200 6200 0 50 Input ~ 0
+JTAG_TDI
+Wire Wire Line
+	8650 6300 8200 6300
+Text GLabel 8200 6300 0 50 Input ~ 0
+JTAG_TCK
+Wire Wire Line
+	8650 6400 8200 6400
+Text GLabel 8200 6400 0 50 Input ~ 0
+JTAG_TMS
+Wire Wire Line
+	8650 6500 8200 6500
+Text GLabel 8200 6500 0 50 Input ~ 0
+JTAG_TDO
+$Comp
+L ENKU_Clock:TESTPOINT TP_USB_DP
+U 1 1 A3000210
+P 7200 5850
+F 0 "TP_USB_DP" H 7258 5968 50 0000 L CNN
+F 1 "USB_D+" H 7258 5877 50 0000 L CNN
+	1    7200 5850
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	7200 5500 7200 5650
+Text GLabel 7200 5500 1 50 Input ~ 0
+USB_D+
+$Comp
+L ENKU_Clock:TESTPOINT TP_USB_DM
+U 1 1 A3000211
+P 7600 5850
+F 0 "TP_USB_DM" H 7658 5968 50 0000 L CNN
+F 1 "USB_D-" H 7658 5877 50 0000 L CNN
+	1    7600 5850
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	7600 5500 7600 5650
+Text GLabel 7600 5500 1 50 Input ~ 0
+USB_D-
+Text Notes 7600 6900 0 45 ~ 0
+No production connector BOM cost: JDBG1 is a spring-contact / Tag-Connect-style pad footprint.
+$EndSCHEMATC

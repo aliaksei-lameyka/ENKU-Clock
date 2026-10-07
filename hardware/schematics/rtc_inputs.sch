@@ -1,0 +1,393 @@
+EESchema Schematic File Version 4
+LIBS:ENKU_Clock
+EELAYER 29 0
+EELAYER END
+$Descr A4 11693 8268
+Sheet 1 1
+Title "RTC / Sensors / Inputs"
+Date "2026-10-05"
+Rev "Rev A"
+Comp "ENKU"
+Comment1 "Clock v0.3"
+Comment2 "8-degree ID baseline"
+Comment3 ""
+Comment4 ""
+$EndDescr
+
+$Comp
+L ENKU_Clock:RV3028_C7 U4
+U 1 1 A4000001
+P 3000 2400
+F 0 "U4" H 3000 3000 50 0000 C CNN
+F 1 "RV-3028-C7" H 3000 1800 50 0000 C CNN
+	1    3000 2400
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	3800 2300 4300 2300
+Text GLabel 4300 2300 2 50 Input ~ 0
++3V3
+Wire Wire Line
+	3800 2700 4300 2700
+Text GLabel 4300 2700 2 50 Input ~ 0
+GND
+Wire Wire Line
+	2200 2300 1700 2300
+Text GLabel 1700 2300 0 50 Input ~ 0
+RTC_INT
+Wire Wire Line
+	2200 2500 1700 2500
+Text GLabel 1700 2500 0 50 Input ~ 0
+I2C_SCL
+Wire Wire Line
+	2200 2700 1700 2700
+Text GLabel 1700 2700 0 50 Input ~ 0
+I2C_SDA
+$Comp
+L ENKU_Clock:VEML7700 U5
+U 1 1 A4000010
+P 6900 2400
+F 0 "U5" H 6900 2900 50 0000 C CNN
+F 1 "VEML7700" H 6900 1900 50 0000 C CNN
+	1    6900 2400
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	6150 2250 5650 2250
+Text GLabel 5650 2250 0 50 Input ~ 0
+I2C_SCL
+Wire Wire Line
+	6150 2550 5650 2550
+Text GLabel 5650 2550 0 50 Input ~ 0
+I2C_SDA
+Wire Wire Line
+	7650 2250 8150 2250
+Text GLabel 8150 2250 2 50 Input ~ 0
++3V3
+Wire Wire Line
+	7650 2550 8150 2550
+Text GLabel 8150 2550 2 50 Input ~ 0
+GND
+$Comp
+L ENKU_Clock:CONN_5 J3
+U 1 1 A4000020
+P 3000 4700
+F 0 "J3" H 3000 5150 50 0000 C CNN
+F 1 "J_ENCODER / GH 5P" H 3000 4250 50 0000 C CNN
+	1    3000 4700
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	2550 4500 2100 4500
+Text GLabel 2100 4500 0 50 Input ~ 0
+GND
+Wire Wire Line
+	2550 4600 2100 4600
+Text GLabel 2100 4600 0 50 Input ~ 0
+ENC_A
+Wire Wire Line
+	2550 4700 2100 4700
+Text GLabel 2100 4700 0 50 Input ~ 0
+ENC_B
+Wire Wire Line
+	2550 4800 2100 4800
+Text GLabel 2100 4800 0 50 Input ~ 0
+ENC_SW
+Wire Wire Line
+	2550 4900 2100 4900
+Text GLabel 2100 4900 0 50 Input ~ 0
+GND
+$Comp
+L ENKU_Clock:CONN_3 J4
+U 1 1 A4000030
+P 6900 4700
+F 0 "J4" H 6900 5100 50 0000 C CNN
+F 1 "J_SNOOZE / GH 3P" H 6900 4300 50 0000 C CNN
+	1    6900 4700
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	6450 4575 6000 4575
+Text GLabel 6000 4575 0 50 Input ~ 0
+GND
+Wire Wire Line
+	6450 4700 6000 4700
+Text GLabel 6000 4700 0 50 Input ~ 0
+SNOOZE_SW
+Wire Wire Line
+	6450 4825 6000 4825
+Text GLabel 6000 4825 0 50 Input ~ 0
+GND
+
+Text Notes 900 700 0 70 ~ 12
+I2C / RTC SUPPORT
+$Comp
+L Device:R R_SDA
+U 1 1 A4000100
+P 4700 1400
+F 0 "R_SDA" H 4770 1446 50 0000 L CNN
+F 1 "10k" H 4770 1355 50 0000 L CNN
+	1    4700 1400
+	1 0 0 -1
+$EndComp
+$Comp
+L Device:R R_SCL
+U 1 1 A4000101
+P 5250 1400
+F 0 "R_SCL" H 5320 1446 50 0000 L CNN
+F 1 "10k" H 5320 1355 50 0000 L CNN
+	1    5250 1400
+	1 0 0 -1
+$EndComp
+$Comp
+L Device:R R_INT
+U 1 1 A4000102
+P 5800 1400
+F 0 "R_INT" H 5870 1446 50 0000 L CNN
+F 1 "10k" H 5870 1355 50 0000 L CNN
+	1    5800 1400
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	4700 1250 4700 1100
+Wire Wire Line
+	5250 1250 5250 1100
+Wire Wire Line
+	5800 1250 5800 1100
+Wire Wire Line
+	4700 1100 5800 1100
+Text GLabel 5250 1100 1 50 Input ~ 0
++3V3
+Wire Wire Line
+	4700 1550 4700 1700
+Text GLabel 4700 1700 3 50 Input ~ 0
+I2C_SDA
+Wire Wire Line
+	5250 1550 5250 1700
+Text GLabel 5250 1700 3 50 Input ~ 0
+I2C_SCL
+Wire Wire Line
+	5800 1550 5800 1700
+Text GLabel 5800 1700 3 50 Input ~ 0
+RTC_INT
+$Comp
+L Device:R R_VBACKUP
+U 1 1 A4000110
+P 4550 2850
+F 0 "R_VBACKUP" H 4620 2896 50 0000 L CNN
+F 1 "10k" H 4620 2805 50 0000 L CNN
+	1    4550 2850
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	3800 2500 4550 2500
+Wire Wire Line
+	4550 2500 4550 2700
+Wire Wire Line
+	4550 3000 4550 3150
+Text GLabel 4550 3150 3 50 Input ~ 0
+GND
+$Comp
+L Device:R R_EVI
+U 1 1 A4000111
+P 4850 2850
+F 0 "R_EVI" H 4920 2896 50 0000 L CNN
+F 1 "10k" H 4920 2805 50 0000 L CNN
+	1    4850 2850
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	3800 2100 4850 2100
+Wire Wire Line
+	4850 2100 4850 2700
+Wire Wire Line
+	4850 3000 4850 3150
+Text GLabel 4850 3150 3 50 Input ~ 0
+GND
+$Comp
+L Device:C C_RTC
+U 1 1 A4000112
+P 5200 2700
+F 0 "C_RTC" H 5315 2746 50 0000 L CNN
+F 1 "100nF" H 5315 2655 50 0000 L CNN
+	1    5200 2700
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	5200 2550 5200 2400
+Text GLabel 5200 2400 1 50 Input ~ 0
++3V3
+Wire Wire Line
+	5200 2850 5200 3000
+Text GLabel 5200 3000 3 50 Input ~ 0
+GND
+$Comp
+L Device:C C_ALS1
+U 1 1 A4000120
+P 8650 2350
+F 0 "C_ALS1" H 8765 2396 50 0000 L CNN
+F 1 "100nF" H 8765 2305 50 0000 L CNN
+	1    8650 2350
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	8650 2200 8650 2050
+Text GLabel 8650 2050 1 50 Input ~ 0
++3V3
+Wire Wire Line
+	8650 2500 8650 2650
+Text GLabel 8650 2650 3 50 Input ~ 0
+GND
+$Comp
+L Device:C C_ALS2
+U 1 1 A4000121
+P 9150 2350
+F 0 "C_ALS2" H 9265 2396 50 0000 L CNN
+F 1 "10uF DNP" H 9265 2305 50 0000 L CNN
+	1    9150 2350
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	9150 2200 9150 2050
+Text GLabel 9150 2050 1 50 Input ~ 0
++3V3
+Wire Wire Line
+	9150 2500 9150 2650
+Text GLabel 9150 2650 3 50 Input ~ 0
+GND
+Text Notes 7850 3000 0 45 ~ 0
+VEML7700: 100nF local decoupling mandatory; 10uF optional/DNP unless supply noise requires it.
+
+Text Notes 900 3650 0 70 ~ 12
+REMOTE INPUT CONDITIONING
+$Comp
+L Device:R R_ENCA
+U 1 1 A4000130
+P 3700 4050
+F 0 "R_ENCA" H 3770 4096 50 0000 L CNN
+F 1 "10k" H 3770 4005 50 0000 L CNN
+	1    3700 4050
+	1 0 0 -1
+$EndComp
+$Comp
+L Device:R R_ENCB
+U 1 1 A4000131
+P 4250 4050
+F 0 "R_ENCB" H 4320 4096 50 0000 L CNN
+F 1 "10k" H 4320 4005 50 0000 L CNN
+	1    4250 4050
+	1 0 0 -1
+$EndComp
+$Comp
+L Device:R R_ENCSW
+U 1 1 A4000132
+P 4800 4050
+F 0 "R_ENCSW" H 4870 4096 50 0000 L CNN
+F 1 "10k" H 4870 4005 50 0000 L CNN
+	1    4800 4050
+	1 0 0 -1
+$EndComp
+$Comp
+L Device:R R_SNZ
+U 1 1 A4000133
+P 8050 4050
+F 0 "R_SNZ" H 8120 4096 50 0000 L CNN
+F 1 "10k" H 8120 4005 50 0000 L CNN
+	1    8050 4050
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	3700 3900 3700 3750
+Wire Wire Line
+	4250 3900 4250 3750
+Wire Wire Line
+	4800 3900 4800 3750
+Wire Wire Line
+	8050 3900 8050 3750
+Text GLabel 5900 3750 1 50 Input ~ 0
++3V3
+Wire Wire Line
+	3700 3750 8050 3750
+Wire Wire Line
+	3700 4200 3700 4350
+Text GLabel 3700 4350 3 50 Input ~ 0
+ENC_A
+Wire Wire Line
+	4250 4200 4250 4350
+Text GLabel 4250 4350 3 50 Input ~ 0
+ENC_B
+Wire Wire Line
+	4800 4200 4800 4350
+Text GLabel 4800 4350 3 50 Input ~ 0
+ENC_SW
+Wire Wire Line
+	8050 4200 8050 4350
+Text GLabel 8050 4350 3 50 Input ~ 0
+SNOOZE_SW
+$Comp
+L Device:C C_ENCA
+U 1 1 A4000140
+P 3700 5450
+F 0 "C_ENCA" H 3815 5496 50 0000 L CNN
+F 1 "1nF DNP" H 3815 5405 50 0000 L CNN
+	1    3700 5450
+	1 0 0 -1
+$EndComp
+$Comp
+L Device:C C_ENCB
+U 1 1 A4000141
+P 4250 5450
+F 0 "C_ENCB" H 4365 5496 50 0000 L CNN
+F 1 "1nF DNP" H 4365 5405 50 0000 L CNN
+	1    4250 5450
+	1 0 0 -1
+$EndComp
+$Comp
+L Device:C C_ENCSW
+U 1 1 A4000142
+P 4800 5450
+F 0 "C_ENCSW" H 4915 5496 50 0000 L CNN
+F 1 "10nF DNP" H 4915 5405 50 0000 L CNN
+	1    4800 5450
+	1 0 0 -1
+$EndComp
+$Comp
+L Device:C C_SNZ
+U 1 1 A4000143
+P 8050 5450
+F 0 "C_SNZ" H 8165 5496 50 0000 L CNN
+F 1 "10nF" H 8165 5405 50 0000 L CNN
+	1    8050 5450
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	3700 5300 3700 5150
+Text GLabel 3700 5150 1 50 Input ~ 0
+ENC_A
+Wire Wire Line
+	4250 5300 4250 5150
+Text GLabel 4250 5150 1 50 Input ~ 0
+ENC_B
+Wire Wire Line
+	4800 5300 4800 5150
+Text GLabel 4800 5150 1 50 Input ~ 0
+ENC_SW
+Wire Wire Line
+	8050 5300 8050 5150
+Text GLabel 8050 5150 1 50 Input ~ 0
+SNOOZE_SW
+Wire Wire Line
+	3700 5600 3700 5750
+Wire Wire Line
+	4250 5600 4250 5750
+Wire Wire Line
+	4800 5600 4800 5750
+Wire Wire Line
+	8050 5600 8050 5750
+Text GLabel 5900 5750 3 50 Input ~ 0
+GND
+Wire Wire Line
+	3700 5750 8050 5750
+Text Notes 1800 6250 0 50 ~ 0
+External pull-ups live on Mainboard; optional small capacitors tame long harness contact bounce. Snooze gets 10nF populated by default.
+$EndSCHEMATC

@@ -1,0 +1,479 @@
+EESchema Schematic File Version 4
+LIBS:ENKU_Clock
+EELAYER 29 0
+EELAYER END
+$Descr A4 11693 8268
+Sheet 1 1
+Title "E Ink & Frontlight"
+Date "2026-10-05"
+Rev "Rev A.3"
+Comp "ENKU"
+Comment1 "GDEY037T03-FL21 / UC8253"
+Comment2 "24-pin map locked from Good Display specification"
+Comment3 ""
+Comment4 ""
+$EndDescr
+
+Text Notes 600 500 0 90 ~ 18
+GDEY037T03-FL21 — 24P FPC + UC8253 SUPPORT
+$Comp
+L ENKU_Clock:CONN_24 J5
+U 1 1 A5000001
+P 3000 3550
+F 0 "J5" H 2950 4950 50 0000 C CNN
+F 1 "GDEY037T03-FL21 / 24P FPC 0.5mm" H 3000 2150 50 0000 C CNN
+	1    3000 3550
+	1 0 0 -1
+$EndComp
+
+Text Notes 650 900 0 50 ~ 0
+Pin map from Good Display GDEY037T03-FL21 spec:
+Text Notes 650 1050 0 45 ~ 0
+1 NC, 2 GDR, 3 RESE, 4 NC, 5 VSH2, 6 TSCL, 7 TSDA, 8 BS1, 9 BUSY, 10 RES#, 11 D/C#, 12 CS#,
+Text Notes 650 1175 0 45 ~ 0
+13 SCL, 14 SDA, 15 VDDIO, 16 VCI, 17 VSS, 18 VDD, 19 VPP, 20 VSH1, 21 VGH, 22 VSL, 23 VGL, 24 VCOM.
+
+Text GLabel 2150 3240 0 50 Input ~ 0
+EPD_BUSY
+Wire Wire Line
+	2150 3240 2500 3240
+Text GLabel 2150 3340 0 50 Input ~ 0
+EPD_RST
+Wire Wire Line
+	2150 3340 2500 3340
+Text GLabel 2150 3440 0 50 Input ~ 0
+EPD_DC
+Wire Wire Line
+	2150 3440 2500 3440
+Text GLabel 2150 3540 0 50 Input ~ 0
+EPD_CS
+Wire Wire Line
+	2150 3540 2500 3540
+Text GLabel 2150 3640 0 50 Input ~ 0
+EPD_SCK
+Wire Wire Line
+	2150 3640 2500 3640
+Text GLabel 2150 3740 0 50 Input ~ 0
+EPD_MOSI
+Wire Wire Line
+	2150 3740 2500 3740
+
+Wire Wire Line
+	2500 3140 2050 3140
+Text GLabel 2050 3140 0 50 Input ~ 0
+GND
+Text Notes 1350 3100 0 40 ~ 0
+BS1=LOW -> 4-wire SPI
+
+Wire Wire Line
+	2500 3840 2050 3840
+Text GLabel 2050 3840 0 50 Input ~ 0
++3V3
+Wire Wire Line
+	2500 3940 2050 3940
+Text GLabel 2050 3940 0 50 Input ~ 0
++3V3
+Wire Wire Line
+	2500 4040 2050 4040
+Text GLabel 2050 4040 0 50 Input ~ 0
+GND
+
+$Comp
+L Device:C C_VDD
+U 1 1 A5000100
+P 1650 4140
+F 0 "C_VDD" V 1398 4140 50 0000 C CNN
+F 1 "1uF/50V" V 1489 4140 50 0000 C CNN
+	1    1650 4140
+	0 1 1 0
+$EndComp
+Wire Wire Line
+	1800 4140 2500 4140
+Wire Wire Line
+	1500 4140 1250 4140
+Text GLabel 1250 4140 0 50 Input ~ 0
+GND
+
+Text Notes 650 4750 0 45 ~ 0
+Pins 1/4 remain open. TSCL/TSDA are reserved for the panel controller's optional external temperature-sensor master interface and remain open in Rev A.
+Text Notes 650 4875 0 45 ~ 0
+VPP (pin19) is FOR TEST and remains open. Analog pump/reservoir nodes below follow Good Display's UC8253 reference circuit.
+
+Text Notes 4800 650 0 80 ~ 16
+UC8253 EXTERNAL BOOSTER / RESERVOIRS
+$Comp
+L Device:L L_EPD
+U 1 1 A5000200
+P 5550 1850
+F 0 "L_EPD" V 5740 1850 50 0000 C CNN
+F 1 "10uH / >=1A (NR3015 class)" V 5649 1850 50 0000 C CNN
+	1    5550 1850
+	0 -1 -1 0
+$EndComp
+Wire Wire Line
+	4950 1850 5400 1850
+Text GLabel 4950 1850 0 50 Input ~ 0
++3V3
+Wire Wire Line
+	5700 1850 6150 1850
+Text GLabel 6150 1850 2 50 Input ~ 0
+EPD_SW
+
+$Comp
+L Device:C C_EPDIN
+U 1 1 A5000201
+P 5150 2250
+F 0 "C_EPDIN" H 5265 2296 50 0000 L CNN
+F 1 "4.7uF/50V" H 5265 2205 50 0000 L CNN
+	1    5150 2250
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	5150 2100 5150 1850
+Wire Wire Line
+	5150 2400 5150 2550
+Text GLabel 5150 2550 3 50 Input ~ 0
+GND
+
+$Comp
+L ENKU_Clock:AO3400A Q_EPD
+U 1 1 A5000202
+P 6500 2350
+F 0 "Q_EPD" H 6800 2600 50 0000 C CNN
+F 1 "Si1308EDL-class 30V NMOS" H 7000 2100 50 0000 C CNN
+	1    6500 2350
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	6700 1950 6700 1850
+Text GLabel 6700 1850 1 50 Input ~ 0
+EPD_SW
+Wire Wire Line
+	6100 2350 5750 2350
+Text GLabel 5750 2350 0 50 Input ~ 0
+EPD_GDR
+Wire Wire Line
+	6700 2750 6700 3000
+Text GLabel 6700 3000 3 50 Input ~ 0
+EPD_RESE
+
+$Comp
+L Device:R R_GDR
+U 1 1 A5000203
+P 5750 2750
+F 0 "R_GDR" H 5820 2796 50 0000 L CNN
+F 1 "1M 1%" H 5820 2705 50 0000 L CNN
+	1    5750 2750
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	5750 2600 5750 2350
+Wire Wire Line
+	5750 2900 5750 3050
+Text GLabel 5750 3050 3 50 Input ~ 0
+GND
+
+$Comp
+L Device:R R_RESE
+U 1 1 A5000204
+P 7100 3200
+F 0 "R_RESE" H 7170 3246 50 0000 L CNN
+F 1 "0.47R 1%" H 7170 3155 50 0000 L CNN
+	1    7100 3200
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	7100 3050 7100 3000
+Wire Wire Line
+	7100 3000 6700 3000
+Wire Wire Line
+	7100 3350 7100 3500
+Text GLabel 7100 3500 3 50 Input ~ 0
+GND
+
+$Comp
+L Device:D_Schottky D3
+U 1 1 A5000210
+P 7450 1850
+F 0 "D3" H 7450 1633 50 0000 C CNN
+F 1 "MBR0530" H 7450 1724 50 0000 C CNN
+	1    7450 1850
+	-1 0 0 1
+$EndComp
+Wire Wire Line
+	6150 1850 7300 1850
+Wire Wire Line
+	7600 1850 8100 1850
+Text GLabel 8100 1850 2 50 Input ~ 0
+PREVGH
+$Comp
+L Device:C C_PREVGH
+U 1 1 A5000211
+P 7950 2250
+F 0 "C_PREVGH" H 8065 2296 50 0000 L CNN
+F 1 "1uF/50V" H 8065 2205 50 0000 L CNN
+	1    7950 2250
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	7950 2100 7950 1850
+Wire Wire Line
+	7950 2400 7950 2550
+Text GLabel 7950 2550 3 50 Input ~ 0
+GND
+
+$Comp
+L Device:C C_PUMP
+U 1 1 A5000220
+P 8650 2000
+F 0 "C_PUMP" H 8765 2046 50 0000 L CNN
+F 1 "4.7uF/50V" H 8765 1955 50 0000 L CNN
+	1    8650 2000
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	8650 2150 8650 2300
+Text GLabel 8650 2300 3 50 Input ~ 0
+EPD_SW
+$Comp
+L Device:D_Schottky D1
+U 1 1 A5000221
+P 9300 1600
+F 0 "D1" H 9300 1817 50 0000 C CNN
+F 1 "MBR0530" H 9300 1726 50 0000 C CNN
+	1    9300 1600
+	1 0 0 -1
+$EndComp
+$Comp
+L Device:D_Schottky D2
+U 1 1 A5000222
+P 9300 2300
+F 0 "D2" H 9300 2517 50 0000 C CNN
+F 1 "MBR0530" H 9300 2426 50 0000 C CNN
+	1    9300 2300
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	8650 1850 8650 1600
+Wire Wire Line
+	8650 1600 9150 1600
+Wire Wire Line
+	8650 2300 9150 2300
+Wire Wire Line
+	9450 2300 9750 2300
+Text GLabel 9750 2300 2 50 Input ~ 0
+GND
+Wire Wire Line
+	9450 1600 9950 1600
+Text GLabel 9950 1600 2 50 Input ~ 0
+PREVGL
+$Comp
+L Device:C C_PREVGL
+U 1 1 A5000223
+P 9800 2000
+F 0 "C_PREVGL" H 9915 2046 50 0000 L CNN
+F 1 "1uF/50V" H 9915 1955 50 0000 L CNN
+	1    9800 2000
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	9800 1850 9800 1600
+Wire Wire Line
+	9800 2150 9800 2300
+Text GLabel 9800 2300 3 50 Input ~ 0
+GND
+
+Wire Wire Line
+	2500 2540 2050 2540
+Text GLabel 2050 2540 0 50 Input ~ 0
+EPD_GDR
+Wire Wire Line
+	2500 2640 2050 2640
+Text GLabel 2050 2640 0 50 Input ~ 0
+EPD_RESE
+
+Wire Wire Line
+	2500 4440 2050 4440
+Text GLabel 2050 4440 0 50 Input ~ 0
+PREVGH
+Wire Wire Line
+	2500 4640 2050 4640
+Text GLabel 2050 4640 0 50 Input ~ 0
+PREVGL
+
+$Comp
+L Device:C C_VSH2
+U 1 1 A5000300
+P 1650 2840
+F 0 "C_VSH2" V 1398 2840 50 0000 C CNN
+F 1 "1uF/50V" V 1489 2840 50 0000 C CNN
+	1    1650 2840
+	0 1 1 0
+$EndComp
+Wire Wire Line
+	1800 2840 2500 2840
+Wire Wire Line
+	1500 2840 1250 2840
+Text GLabel 1250 2840 0 50 Input ~ 0
+GND
+
+$Comp
+L Device:C C_VSH1
+U 1 1 A5000301
+P 1650 4340
+F 0 "C_VSH1" V 1398 4340 50 0000 C CNN
+F 1 "1uF/50V" V 1489 4340 50 0000 C CNN
+	1    1650 4340
+	0 1 1 0
+$EndComp
+Wire Wire Line
+	1800 4340 2500 4340
+Wire Wire Line
+	1500 4340 1250 4340
+Text GLabel 1250 4340 0 50 Input ~ 0
+GND
+$Comp
+L Device:C C_VSL
+U 1 1 A5000302
+P 1650 4540
+F 0 "C_VSL" V 1398 4540 50 0000 C CNN
+F 1 "1uF/50V" V 1489 4540 50 0000 C CNN
+	1    1650 4540
+	0 1 1 0
+$EndComp
+Wire Wire Line
+	1800 4540 2500 4540
+Wire Wire Line
+	1500 4540 1250 4540
+Text GLabel 1250 4540 0 50 Input ~ 0
+GND
+$Comp
+L Device:C C_VCOM
+U 1 1 A5000303
+P 1650 4740
+F 0 "C_VCOM" V 1398 4740 50 0000 C CNN
+F 1 "1uF/50V" V 1489 4740 50 0000 C CNN
+	1    1650 4740
+	0 1 1 0
+$EndComp
+Wire Wire Line
+	1800 4740 2500 4740
+Wire Wire Line
+	1500 4740 1250 4740
+Text GLabel 1250 4740 0 50 Input ~ 0
+GND
+
+$Comp
+L ENKU_Clock:TESTPOINT TP_VGH
+U 1 1 A5000310
+P 8550 1250
+F 0 "TP_VGH" H 8608 1368 50 0000 L CNN
+F 1 "PREVGH" H 8608 1277 50 0000 L CNN
+	1    8550 1250
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	8550 900 8550 1050
+Text GLabel 8550 900 1 50 Input ~ 0
+PREVGH
+$Comp
+L ENKU_Clock:TESTPOINT TP_VGL
+U 1 1 A5000311
+P 9200 1250
+F 0 "TP_VGL" H 9258 1368 50 0000 L CNN
+F 1 "PREVGL" H 9258 1277 50 0000 L CNN
+	1    9200 1250
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	9200 900 9200 1050
+Text GLabel 9200 900 1 50 Input ~ 0
+PREVGL
+
+Text Notes 4750 3850 0 45 ~ 0
+Reference booster parts: D1-D3 MBR0530-class >=30V/500mA, Q_EPD Si1308EDL-class >=30V, L_EPD 10uH >=1A.
+Text Notes 4750 4000 0 45 ~ 0
+All EPD analog capacitors use X5R/X7R with >=25V rating; Rev A BOM uses 50V where practical.
+
+Text Notes 600 5350 0 80 ~ 16
+FRONTLIGHT — SEPARATE 6P FPC
+$Comp
+L ENKU_Clock:CONN_6 J6
+U 1 1 A5000010
+P 3000 6000
+F 0 "J6" H 2950 6500 50 0000 C CNN
+F 1 "FL21 Frontlight / 6P FPC" H 3000 5500 50 0000 C CNN
+	1    3000 6000
+	1 0 0 -1
+$EndComp
+Text Notes 650 6750 0 45 ~ 0
+Good Display specifies 9 LEDs in parallel, 2.8-3.3V, <=60mA. Exact six-tail conductor duplication/order is still held for physical FL21 verification.
+Text Notes 650 6875 0 45 ~ 0
+The electrical driver is complete; only connector conductor assignment remains a mechanical/sample gate.
+
+$Comp
+L ENKU_Clock:AO3400A Q_FL
+U 1 1 A5000011
+P 6800 6000
+F 0 "Q_FL" H 7100 6250 50 0000 C CNN
+F 1 "AO3400A" H 7150 5750 50 0000 C CNN
+	1    6800 6000
+	1 0 0 -1
+$EndComp
+$Comp
+L Device:R R_FLIM
+U 1 1 A5000020
+P 6100 5450
+F 0 "R_FLIM" V 5893 5450 50 0000 C CNN
+F 1 "10R / optical tune" V 5984 5450 50 0000 C CNN
+	1    6100 5450
+	0 1 1 0
+$EndComp
+Wire Wire Line
+	5650 5450 5950 5450
+Text GLabel 5650 5450 0 50 Input ~ 0
++3V3
+Wire Wire Line
+	6250 5450 6650 5450
+Text GLabel 6650 5450 2 50 Input ~ 0
+FL_LED+
+Wire Wire Line
+	7000 5600 7000 5450
+Text GLabel 7000 5450 1 50 Input ~ 0
+FL_LED_RETURN
+Wire Wire Line
+	7000 6400 7000 6600
+Text GLabel 7000 6600 3 50 Input ~ 0
+GND
+$Comp
+L Device:R R_FGATE
+U 1 1 A5000021
+P 5750 6000
+F 0 "R_FGATE" V 5543 6000 50 0000 C CNN
+F 1 "47R" V 5634 6000 50 0000 C CNN
+	1    5750 6000
+	0 1 1 0
+$EndComp
+Wire Wire Line
+	5900 6000 6400 6000
+Wire Wire Line
+	5600 6000 5250 6000
+Text GLabel 5250 6000 0 50 Input ~ 0
+FRONTLIGHT_PWM
+$Comp
+L Device:R R_FPD
+U 1 1 A5000022
+P 6250 6350
+F 0 "R_FPD" H 6320 6396 50 0000 L CNN
+F 1 "100k" H 6320 6305 50 0000 L CNN
+	1    6250 6350
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	6250 6200 6250 6000
+Wire Wire Line
+	6250 6500 6250 6650
+Text GLabel 6250 6650 3 50 Input ~ 0
+GND
+
+$EndSCHEMATC

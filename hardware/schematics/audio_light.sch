@@ -1,0 +1,211 @@
+EESchema Schematic File Version 4
+LIBS:ENKU_Clock
+EELAYER 29 0
+EELAYER END
+$Descr A4 11693 8268
+Sheet 1 1
+Title "Audio & Wake Light"
+Date "2026-10-05"
+Rev "Rev A"
+Comp "ENKU"
+Comment1 "Clock v0.3"
+Comment2 "8-degree ID baseline"
+Comment3 ""
+Comment4 ""
+$EndDescr
+
+$Comp
+L ENKU_Clock:MAX98357A_TQFN U6
+U 1 1 A6000001
+P 3300 2700
+F 0 "U6" H 3300 3500 50 0000 C CNN
+F 1 "MAX98357AETE+T" H 3300 1900 50 0000 C CNN
+	1    3300 2700
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	2350 2300 1900 2300
+Text GLabel 1900 2300 0 50 Input ~ 0
+I2S_DOUT
+Wire Wire Line
+	2350 2600 1900 2600
+Text GLabel 1900 2600 0 50 Input ~ 0
+I2S_BCLK
+Wire Wire Line
+	2350 2800 1900 2800
+Text GLabel 1900 2800 0 50 Input ~ 0
+I2S_LRCLK
+Wire Wire Line
+	4250 2300 4700 2300
+Text GLabel 4700 2300 2 50 Input ~ 0
+SYS_RAW
+Wire Wire Line
+	4250 2600 5000 2600
+Text GLabel 5000 2600 2 50 Input ~ 0
+SPK+
+Wire Wire Line
+	4250 2800 5000 2800
+Text GLabel 5000 2800 2 50 Input ~ 0
+SPK-
+$Comp
+L ENKU_Clock:CONN_2 J7
+U 1 1 A6000010
+P 6600 2650
+F 0 "J7" H 6600 3000 50 0000 C CNN
+F 1 "J_SPK / 2P" H 6600 2300 50 0000 C CNN
+	1    6600 2650
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	6150 2575 5650 2575
+Text GLabel 5650 2575 0 50 Input ~ 0
+SPK+
+Wire Wire Line
+	6150 2725 5650 2725
+Text GLabel 5650 2725 0 50 Input ~ 0
+SPK-
+$Comp
+L ENKU_Clock:CONN_2 J8
+U 1 1 A6000020
+P 3000 5100
+F 0 "J8" H 3000 5450 50 0000 C CNN
+F 1 "J_WAKE_LED / GH 2P" H 3000 4750 50 0000 C CNN
+	1    3000 5100
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	2550 5025 2100 5025
+Text GLabel 2100 5025 0 50 Input ~ 0
++3V3
+Wire Wire Line
+	2550 5175 2100 5175
+Text GLabel 2100 5175 0 50 Input ~ 0
+WAKE_LED_RETURN
+$Comp
+L ENKU_Clock:AO3400A Q2
+U 1 1 A6000021
+P 5300 5200
+F 0 "Q2" H 5600 5450 50 0000 C CNN
+F 1 "AO3400A" H 5650 4950 50 0000 C CNN
+	1    5300 5200
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	4900 5200 4450 5200
+Text GLabel 4450 5200 0 50 Input ~ 0
+WAKE_LED_PWM
+Wire Wire Line
+	5500 4800 5500 4500
+Text GLabel 5500 4500 1 50 Input ~ 0
+WAKE_LED_RETURN
+Wire Wire Line
+	5500 5600 5500 5900
+Text GLabel 5500 5900 3 50 Input ~ 0
+GND
+Text Notes 1600 6650 0 50 ~ 0
+Wake LEDs are remote on PCB-D; Q2 stays on Mainboard.
+
+Text Notes 850 700 0 70 ~ 12
+AUDIO SUPPORT
+$Comp
+L Device:R R_SD
+U 1 1 A6000100
+P 1450 2700
+F 0 "R_SD" V 1243 2700 50 0000 C CNN
+F 1 "2.2k" V 1334 2700 50 0000 C CNN
+	1    1450 2700
+	0 1 1 0
+$EndComp
+Wire Wire Line
+	1600 2700 2350 2700
+Wire Wire Line
+	1300 2700 1000 2700
+Text GLabel 1000 2700 0 50 Input ~ 0
+AMP_SD
+$Comp
+L Device:R R_GAIN
+U 1 1 A6000101
+P 1450 2050
+F 0 "R_GAIN" V 1243 2050 50 0000 C CNN
+F 1 "0R / 12dB" V 1334 2050 50 0000 C CNN
+	1    1450 2050
+	0 1 1 0
+$EndComp
+Wire Wire Line
+	1600 2050 2350 2050
+Wire Wire Line
+	1300 2050 1000 2050
+Text GLabel 1000 2050 0 50 Input ~ 0
+GND
+$Comp
+L Device:C C_AUD1
+U 1 1 A6000110
+P 5200 2200
+F 0 "C_AUD1" H 5315 2246 50 0000 L CNN
+F 1 "100nF" H 5315 2155 50 0000 L CNN
+	1    5200 2200
+	1 0 0 -1
+$EndComp
+$Comp
+L Device:C C_AUD2
+U 1 1 A6000111
+P 5750 2200
+F 0 "C_AUD2" H 5865 2246 50 0000 L CNN
+F 1 "10uF" H 5865 2155 50 0000 L CNN
+	1    5750 2200
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	5200 2050 5200 1900
+Wire Wire Line
+	5750 2050 5750 1900
+Wire Wire Line
+	5200 1900 5750 1900
+Text GLabel 5475 1900 1 50 Input ~ 0
+SYS_RAW
+Wire Wire Line
+	5200 2350 5200 2500
+Wire Wire Line
+	5750 2350 5750 2500
+Wire Wire Line
+	5200 2500 5750 2500
+Text GLabel 5475 2500 3 50 Input ~ 0
+GND
+Text Notes 850 3350 0 45 ~ 0
+MAX98357A: GAIN_SLOT hard GND = 12dB. SD_MODE driven through 2.2k so 3.3V GPIO remains safe if SYS_RAW falls below 3.3V.
+
+Text Notes 850 4050 0 70 ~ 12
+WAKE LIGHT SWITCH
+$Comp
+L Device:R R_GATE
+U 1 1 A6000120
+P 4150 5200
+F 0 "R_GATE" V 3943 5200 50 0000 C CNN
+F 1 "47R" V 4034 5200 50 0000 C CNN
+	1    4150 5200
+	0 1 1 0
+$EndComp
+Wire Wire Line
+	4300 5200 4900 5200
+Wire Wire Line
+	4000 5200 3650 5200
+Text GLabel 3650 5200 0 50 Input ~ 0
+WAKE_LED_PWM
+$Comp
+L Device:R R_GPD
+U 1 1 A6000121
+P 4700 5550
+F 0 "R_GPD" H 4770 5596 50 0000 L CNN
+F 1 "100k" H 4770 5505 50 0000 L CNN
+	1    4700 5550
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	4700 5400 4700 5200
+Wire Wire Line
+	4700 5700 4700 5850
+Text GLabel 4700 5850 3 50 Input ~ 0
+GND
+Text Notes 6000 5550 0 45 ~ 0
+Q2 low-side switches only the remote LED return; LED PCB owns the six individual current-setting resistors.
+$EndSCHEMATC

@@ -1,0 +1,223 @@
+EESchema Schematic File Version 4
+LIBS:ENKU_Clock
+EELAYER 29 0
+EELAYER END
+$Descr A4 11693 8268
+Sheet 1 1
+Title "Wake LED daughterboard"
+Date "2026-10-05"
+Rev "Rev A.1"
+Comp "ENKU"
+Comment1 "Clock v0.3"
+Comment2 "78 x 8 mm linear underglow module"
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L ENKU_Clock:CONN_2 J1
+U 1 1 A9000001
+P 1500 3400
+F 0 "J1" H 1500 3750 50 0000 C CNN
+F 1 "JST-GH 2P" H 1500 3050 50 0000 C CNN
+	1    1500 3400
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	1050 3325 700 3325
+Text GLabel 700 3325 0 50 Input ~ 0
++3V3
+Wire Wire Line
+	1050 3475 700 3475
+Text GLabel 700 3475 0 50 Input ~ 0
+WAKE_LED_RETURN
+Text Notes 700 650 0 70 ~ 12
+SIX INDEPENDENT LOW-CURRENT LED BRANCHES
+$Comp
+L Device:R R1
+U 1 1 A9000101
+P 3300 1600
+F 0 "R1" V 3093 1600 50 0000 C CNN
+F 1 "56R" V 3184 1600 50 0000 C CNN
+	1    3300 1600
+	0 1 1 0
+$EndComp
+$Comp
+L ENKU_Clock:LED_WARM D1
+U 1 1 A9000010
+P 4500 1600
+F 0 "D1" H 4500 1900 50 0000 C CNN
+F 1 "Nichia 757 / 2700K" H 4500 1300 50 0000 C CNN
+	1    4500 1600
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	2800 1600 3150 1600
+Text GLabel 2800 1600 0 50 Input ~ 0
++3V3
+Wire Wire Line
+	3450 1600 4050 1600
+Wire Wire Line
+	4950 1600 5400 1600
+Text GLabel 5400 1600 2 50 Input ~ 0
+WAKE_LED_RETURN
+
+$Comp
+L Device:R R2
+U 1 1 A9000102
+P 3300 2300
+F 0 "R2" V 3093 2300 50 0000 C CNN
+F 1 "56R" V 3184 2300 50 0000 C CNN
+	1    3300 2300
+	0 1 1 0
+$EndComp
+$Comp
+L ENKU_Clock:LED_WARM D2
+U 1 1 A9000011
+P 4500 2300
+F 0 "D2" H 4500 2600 50 0000 C CNN
+F 1 "Nichia 757 / 2700K" H 4500 2000 50 0000 C CNN
+	1    4500 2300
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	2800 2300 3150 2300
+Text GLabel 2800 2300 0 50 Input ~ 0
++3V3
+Wire Wire Line
+	3450 2300 4050 2300
+Wire Wire Line
+	4950 2300 5400 2300
+Text GLabel 5400 2300 2 50 Input ~ 0
+WAKE_LED_RETURN
+
+$Comp
+L Device:R R3
+U 1 1 A9000103
+P 3300 3000
+F 0 "R3" V 3093 3000 50 0000 C CNN
+F 1 "56R" V 3184 3000 50 0000 C CNN
+	1    3300 3000
+	0 1 1 0
+$EndComp
+$Comp
+L ENKU_Clock:LED_WARM D3
+U 1 1 A9000012
+P 4500 3000
+F 0 "D3" H 4500 3300 50 0000 C CNN
+F 1 "Nichia 757 / 2700K" H 4500 2700 50 0000 C CNN
+	1    4500 3000
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	2800 3000 3150 3000
+Text GLabel 2800 3000 0 50 Input ~ 0
++3V3
+Wire Wire Line
+	3450 3000 4050 3000
+Wire Wire Line
+	4950 3000 5400 3000
+Text GLabel 5400 3000 2 50 Input ~ 0
+WAKE_LED_RETURN
+
+$Comp
+L Device:R R4
+U 1 1 A9000104
+P 3300 3700
+F 0 "R4" V 3093 3700 50 0000 C CNN
+F 1 "56R" V 3184 3700 50 0000 C CNN
+	1    3300 3700
+	0 1 1 0
+$EndComp
+$Comp
+L ENKU_Clock:LED_WARM D4
+U 1 1 A9000013
+P 4500 3700
+F 0 "D4" H 4500 4000 50 0000 C CNN
+F 1 "Nichia 757 / 2700K" H 4500 3400 50 0000 C CNN
+	1    4500 3700
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	2800 3700 3150 3700
+Text GLabel 2800 3700 0 50 Input ~ 0
++3V3
+Wire Wire Line
+	3450 3700 4050 3700
+Wire Wire Line
+	4950 3700 5400 3700
+Text GLabel 5400 3700 2 50 Input ~ 0
+WAKE_LED_RETURN
+
+$Comp
+L Device:R R5
+U 1 1 A9000105
+P 3300 4400
+F 0 "R5" V 3093 4400 50 0000 C CNN
+F 1 "56R" V 3184 4400 50 0000 C CNN
+	1    3300 4400
+	0 1 1 0
+$EndComp
+$Comp
+L ENKU_Clock:LED_WARM D5
+U 1 1 A9000014
+P 4500 4400
+F 0 "D5" H 4500 4700 50 0000 C CNN
+F 1 "Nichia 757 / 2700K" H 4500 4100 50 0000 C CNN
+	1    4500 4400
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	2800 4400 3150 4400
+Text GLabel 2800 4400 0 50 Input ~ 0
++3V3
+Wire Wire Line
+	3450 4400 4050 4400
+Wire Wire Line
+	4950 4400 5400 4400
+Text GLabel 5400 4400 2 50 Input ~ 0
+WAKE_LED_RETURN
+
+$Comp
+L Device:R R6
+U 1 1 A9000106
+P 3300 5100
+F 0 "R6" V 3093 5100 50 0000 C CNN
+F 1 "56R" V 3184 5100 50 0000 C CNN
+	1    3300 5100
+	0 1 1 0
+$EndComp
+$Comp
+L ENKU_Clock:LED_WARM D6
+U 1 1 A9000015
+P 4500 5100
+F 0 "D6" H 4500 5400 50 0000 C CNN
+F 1 "Nichia 757 / 2700K" H 4500 4800 50 0000 C CNN
+	1    4500 5100
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	2800 5100 3150 5100
+Text GLabel 2800 5100 0 50 Input ~ 0
++3V3
+Wire Wire Line
+	3450 5100 4050 5100
+Wire Wire Line
+	4950 5100 5400 5100
+Text GLabel 5400 5100 2 50 Input ~ 0
+WAKE_LED_RETURN
+
+Text Notes 6500 1800 0 55 ~ 0
+Rev A optical starting point
+Text Notes 6500 2000 0 50 ~ 0
+6 x warm 2700K LEDs
+Text Notes 6500 2150 0 50 ~ 0
+56R per branch from 3.3V
+Text Notes 6500 2300 0 50 ~ 0
+Target ~8-12mA/LED in real diffuser test
+Text Notes 6500 2450 0 50 ~ 0
+Alternate resistor BOM: 39R / 68R / 82R
+Text Notes 6500 2850 0 50 ~ 0
+No perimeter light, no RGB, no local controller.
+Text Notes 6500 3000 0 50 ~ 0
+Mainboard AO3400A low-side PWM controls common return.
+$EndSCHEMATC
