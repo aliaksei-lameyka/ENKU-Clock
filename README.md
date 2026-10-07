@@ -19,6 +19,12 @@ The Rev A electronics set contains four PCBs:
 
 The current revision has passed native KiCad manufacturing checks with zero hard DRC violations and zero unconnected items before prototype submission.
 
+## Rev A hardware
+
+![ENKU Clock Mainboard Rev A placement](assets/mainboard-reva-placement.svg)
+
+![ENKU Clock daughterboards Rev A placement](assets/daughterboards-reva-placement.svg)
+
 ## Design goals
 
 - local-first operation
