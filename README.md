@@ -31,6 +31,22 @@ The current revision has passed native KiCad manufacturing checks with zero hard
 - replaceable external modules where practical
 - open hardware and firmware development
 
+## System overview
+
+```mermaid
+flowchart LR
+    USB[USB-C] --> MAIN[Mainboard<br/>ESP32-S3 + power + RTC + audio + E Ink]
+    BAT[1S LiPo<br/>BAT + NTC] --> MAIN
+    EINK[E Ink display] <-->|24-pin FPC| MAIN
+    FL[Frontlight] <-->|6-pin FPC| MAIN
+    ENC[Encoder board] <-->|5-wire harness| MAIN
+    SNZ[Snooze board] <-->|3-wire harness| MAIN
+    LED[Wake LED board] <-->|2-wire harness| MAIN
+    SPK[Speaker] <-->|2-wire harness| MAIN
+```
+
+The distributed layout keeps user controls and lighting mechanically independent from the Mainboard, improving serviceability and enclosure freedom.
+
 ## Hardware
 
 The system is split into four boards:
@@ -62,11 +78,17 @@ hardware/
   libraries/          Project KiCad symbols and footprints
   assembly/           BOM data
 docs/
+  README.md
   architecture.md
+  connectors.md
+  mechanical-interface.md
   manufacturing.md
+  bringup.md
+  release-checklist.md
   repairability.md
   status.md
 .github/
+  ISSUE_TEMPLATE/
   workflows/
 ```
 
@@ -88,6 +110,7 @@ See [docs/manufacturing.md](docs/manufacturing.md).
 
 ## Documentation
 
+- [Documentation index](docs/README.md)
 - [Architecture](docs/architecture.md)
 - [Connectors and GPIO](docs/connectors.md)
 - [Mechanical interface](docs/mechanical-interface.md)
