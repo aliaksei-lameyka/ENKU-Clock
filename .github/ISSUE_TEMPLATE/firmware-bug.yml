@@ -1,0 +1,35 @@
+name: Firmware issue
+description: Report firmware or bring-up behavior on ENKU Clock hardware.
+title: "[FW] "
+labels: ["firmware"]
+body:
+  - type: input
+    id: hardware
+    attributes:
+      label: Hardware revision
+      placeholder: Rev A
+    validations:
+      required: true
+  - type: input
+    id: firmware
+    attributes:
+      label: Firmware commit / build
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Observed behavior
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / measurements
+      render: shell
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction steps

@@ -1,0 +1,39 @@
+name: DFM / manufacturing issue
+description: Track a fabrication, assembly, sourcing or DFM finding.
+title: "[DFM] "
+labels: ["manufacturing"]
+body:
+  - type: dropdown
+    id: board
+    attributes:
+      label: Board
+      options:
+        - Mainboard
+        - Encoder board
+        - Snooze board
+        - Wake LED board
+        - Multiple boards
+    validations:
+      required: true
+  - type: textarea
+    id: finding
+    attributes:
+      label: Finding
+      description: Copy the fabricator/assembler feedback or describe the issue precisely.
+    validations:
+      required: true
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impact
+      description: Cost, manufacturability, sourcing, reliability or schedule impact.
+  - type: textarea
+    id: proposed
+    attributes:
+      label: Proposed resolution
+      description: Include whether the change requires a PCB revision/ECO.
+  - type: textarea
+    id: references
+    attributes:
+      label: References
+      description: Affected refs, nets, pads, footprints or files.

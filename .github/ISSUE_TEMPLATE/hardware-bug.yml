@@ -1,0 +1,46 @@
+name: Hardware issue
+description: Report a Rev A electrical, PCB, assembly or mechanical hardware problem.
+title: "[HW] "
+labels: ["hardware"]
+body:
+  - type: dropdown
+    id: board
+    attributes:
+      label: Board
+      options:
+        - Mainboard
+        - Encoder board
+        - Snooze board
+        - Wake LED board
+        - Enclosure / harness
+        - Unknown
+    validations:
+      required: true
+  - type: input
+    id: revision
+    attributes:
+      label: Revision
+      placeholder: Rev A
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened?
+      description: Describe the observed behavior, not only the expected fix.
+    validations:
+      required: true
+  - type: textarea
+    id: measurements
+    attributes:
+      label: Measurements / evidence
+      description: Voltages, current, scope traces, photos, DMM checks, connector state, etc.
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction steps
+      description: Include power source, connected modules and firmware state.
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional notes
