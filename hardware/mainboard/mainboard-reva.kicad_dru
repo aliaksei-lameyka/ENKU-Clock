@@ -1,0 +1,17 @@
+(version 1)
+
+(rule "USB-C data breakout clearance"
+  (constraint clearance (min 0.15mm))
+  (condition "A.NetName == 'USB_D+' || A.NetName == 'USB_D-' || A.NetName == 'USB_D+_CONN' || A.NetName == 'USB_D-_CONN' || B.NetName == 'USB_D+_CONN' || B.NetName == 'USB_D-_CONN'")
+)
+
+(rule "USB-C data via drill"
+  (constraint hole_size (min 0.20mm))
+  (constraint via_diameter (min 0.50mm))
+  (condition "A.Type == 'Via' && (A.NetName == 'USB_D+' || A.NetName == 'USB_D-' || A.NetName == 'USB_D+_CONN' || A.NetName == 'USB_D-_CONN')")
+)
+
+(rule "USB-C data via hole clearance"
+  (constraint hole_clearance (min 0.15mm))
+  (condition "A.Type == 'Via' && (A.NetName == 'USB_D+' || A.NetName == 'USB_D-' || A.NetName == 'USB_D+_CONN' || A.NetName == 'USB_D-_CONN')")
+)

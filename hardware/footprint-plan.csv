@@ -1,0 +1,25 @@
+Reference,Part,Footprint baseline,Status,Notes
+U1,ESP32-S3-WROOM-1-N8,RF_Module:ESP32-S3-WROOM-1,LOCK,Respect Espressif antenna keepout and edge placement
+U2,BQ24074RGTR,ENKU_Clock:BQ24074_RGT,LOCK,3x3mm VQFN-16 0.5mm pitch; EP 1.7x1.7mm
+U3,TPS62840DLCR,ENKU_Clock:TPS62840_DLC0008B,LOCK,Official TI DLC0008B land: 0.6x0.25mm pads; 0.5mm pitch; 1.3mm row spacing
+U4,RV-3028-C7,ENKU_Clock:RV-3028-C7,LOCK,Datasheet land pattern: 8 pads 0.50x0.80mm, 0.90mm pitch
+U5,VEML7700-TR,ENKU_Clock:VEML7700,LOCK,Side-view 6.8x2.35x3.0mm; optical aperture must face enclosure opening
+U6,MAX98357AETE+T,ENKU_Clock:MAX98357A_ETE_TQFN16,LOCK,ADI TQFN16 3x3mm; 0.5mm pitch; EP 1.23x1.23mm
+U7,USBLC6-2SC6,Package_TO_SOT_SMD:SOT-23-6,LOCK,Place directly at USB-C
+Q_FL/AUDIO/AUX,AO3400A,Package_TO_SOT_SMD:SOT-23,LOCK,Common N-MOS footprint
+J1,TYPE-C-31-M-12,ENKU_Clock:HRO-TYPE-C-31-M-12,LOCK,Exact local footprint imported and used on Mainboard
+J2,JST-PH battery 3P,Connector_JST:JST_PH_S3B-PH-K_1x03_P2.00mm_Horizontal,VERIFY,Prefer robust through-hole right-angle
+J3,JST-GH encoder 5P,Connector_JST:JST_GH_SM05B-GHS-TB_1x05-1MP_P1.25mm_Horizontal,LOCK,Mainboard + encoder board matching family
+J4,JST-GH Snooze 3P,Connector_JST:JST_GH_SM03B-GHS-TB_1x03-1MP_P1.25mm_Horizontal,LOCK,Mainboard + Snooze board
+J5,GDEY037T03-FL21 24P FPC,ENKU_Clock:Molex_54550_24P_0.5mm,LOCK_GEOMETRY,Molex manufacturer PCB pattern locked; final top-contact tail orientation to confirm on physical display
+J6,Frontlight 6P FPC,ENKU_Clock:Molex_54550_06P_0.5mm,LOCK_GEOMETRY,Molex manufacturer PCB pattern locked; six-conductor electrical order remains sample-gated
+J7,Speaker 2P,Connector_JST:JST_PH_S2B-PH-K_1x02_P2.00mm_Horizontal,VERIFY,Can move to GH if acoustic module supplier prefers
+J8,JST-GH Wake LED 2P,Connector_JST:JST_GH_SM02B-GHS-TB_1x02-1MP_P1.25mm_Horizontal,LOCK,Remote LED board
+SW1-ENC,EC11E15244G1,ENKU_Clock:ALPS_EC11E15244G1,CUSTOM,Mechanical shaft datum critical
+SW1-SNZ,KSC221GLFS,ENKU_Clock:C&K_KSC221GLFS,CUSTOM,Top actuator alignment critical
+D_EPD1-3,MBR0530,Diode_SMD:D_SOD-123,VERIFY,Final package depends chosen equivalent/source
+Q_EPD,Si1308EDL class,Package_TO_SOT_SMD:SOT-23,VERIFY,Must satisfy >=30V and low Vgs threshold
+L_EPD,10uH >=1A,Inductor_SMD:L_3.0x3.0mm_H1.5mm,VERIFY,NR3015-class exact part to be BOM-locked
+LED1-6,Nichia 757 2700K,ENKU_Clock:Nichia_757, CUSTOM,Optical orientation and diffuser centerline
+TP*,Test points,TestPoint:TestPoint_Pad_D1.5mm,LOCK,No-pop production access
+JDBG1,Tag-Connect style 10P,ENKU_Clock:TC2050_IDC_NL,VERIFY,No BOM part; pads only
