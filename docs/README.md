@@ -7,6 +7,7 @@ Start here if you are looking for a specific part of the project.
 | System overview | [Architecture](architecture.md) |
 | GPIO and connectors | [Connectors and GPIO](connectors.md) |
 | Mechanical interface | [Mechanical interface](mechanical-interface.md) |
+| External parts / harnesses | [External components](external-components.md) |
 | Fabrication / assembly | [Manufacturing](manufacturing.md) |
 | First power-up | [Rev A bring-up](bringup.md) |
 | Release gates | [Release checklist](release-checklist.md) |
