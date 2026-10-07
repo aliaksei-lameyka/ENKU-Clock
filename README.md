@@ -121,6 +121,7 @@ See [docs/manufacturing.md](docs/manufacturing.md).
 - [Connectors and GPIO](docs/connectors.md)
 - [Mechanical interface](docs/mechanical-interface.md)
 - [External components & harness BOM](docs/external-components.md)
+- [Rev A procurement plan — 5 prototypes](docs/procurement-reva.md)
 - [Manufacturing](docs/manufacturing.md)
 - [Rev A bring-up checklist](docs/bringup.md)
 - [Release checklist](docs/release-checklist.md)
