@@ -72,7 +72,7 @@ docs/
 
 ## Manufacturing
 
-Rev A is currently in prototype/DFM review. Production files are generated from the checked KiCad sources rather than maintained as hand-edited manufacturing files.
+Rev A is currently under PCBWay prototype DFM / sourcing review. Production files are generated from the checked KiCad sources rather than maintained as hand-edited manufacturing files.
 
 For the Mainboard, the baseline fabrication target is:
 
@@ -86,6 +86,17 @@ For the Mainboard, the baseline fabrication target is:
 
 See [docs/manufacturing.md](docs/manufacturing.md).
 
+## Documentation
+
+- [Architecture](docs/architecture.md)
+- [Connectors and GPIO](docs/connectors.md)
+- [Mechanical interface](docs/mechanical-interface.md)
+- [Manufacturing](docs/manufacturing.md)
+- [Rev A bring-up checklist](docs/bringup.md)
+- [Release checklist](docs/release-checklist.md)
+- [Repairability](docs/repairability.md)
+- [Project status](docs/status.md)
+
 ## Repairability
 
 ENKU Clock uses separate boards for controls and lighting so service parts can be replaced independently. Connectors, polarity and functional interfaces are documented wherever practical.
@@ -94,7 +105,7 @@ See [docs/repairability.md](docs/repairability.md).
 
 ## Firmware
 
-Firmware will live in this repository as the Rev A bring-up stabilizes.
+Firmware will live in this repository as the Rev A bring-up stabilizes. The first firmware milestone is a hardware bring-up image covering power, USB, RTC, ambient-light sensing, controls, audio, E Ink and lighting.
 
 ## Project stage
 
