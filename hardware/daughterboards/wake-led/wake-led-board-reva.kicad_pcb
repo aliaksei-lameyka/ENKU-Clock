@@ -179,7 +179,7 @@
   (segment (start 34 0.8) (end 34 1.0) (width 0.3) (layer "F.Cu") (net 1))
   (segment (start 34 2.6) (end 34 3.12) (width 0.3) (layer "F.Cu") (net 4))
   (segment (start 34 6.49) (end 34 7.2) (width 0.4) (layer "B.Cu") (net 8))
-  (via (at 34 6.49) (size 0.75) (drill 0.35) (layers "F.Cu" "B.Cu") (net 8))
+  (via (at 34 6.49) (size 0.75) (drill 0.35) (layers "F.Cu" "B.Cu") (untented_bottom) (net 8))
 
   (segment (start 45 0.8) (end 45 1.0) (width 0.3) (layer "F.Cu") (net 1))
   (segment (start 45 2.6) (end 45 3.12) (width 0.3) (layer "F.Cu") (net 5))
