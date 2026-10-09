@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - hardware/daughterboards/wake-led/wake-led-board-reva.kicad_pcb
+      - .github/workflows/wake-led-release.yml
   workflow_dispatch:
 
 jobs:
