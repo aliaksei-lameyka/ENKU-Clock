@@ -1,0 +1,59 @@
+name: Wake LED release
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - hardware/daughterboards/wake-led/wake-led-board-reva.kicad_pcb
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install KiCad 10 and zip
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y software-properties-common zip
+          sudo add-apt-repository --yes ppa:kicad/kicad-10.0-releases
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends kicad
+          kicad-cli version
+
+      - name: Validate and export Wake LED
+        run: |
+          set -euo pipefail
+          PCB="hardware/daughterboards/wake-led/wake-led-board-reva.kicad_pcb"
+          OUT="production/wake-led"
+          GER="$OUT/gerbers"
+          mkdir -p "$GER"
+
+          kicad-cli pcb drc --refill-zones --severity-error --exit-code-violations             -o "$OUT/wake-led-board-reva-drc.rpt" "$PCB"
+
+          kicad-cli pcb export gerbers             --layers F.Cu,B.Cu,F.Mask,B.Mask,F.Silkscreen,B.Silkscreen,Edge.Cuts             -o "$GER/" "$PCB"
+
+          kicad-cli pcb export drill --format excellon --excellon-units mm             -o "$GER/" "$PCB"
+
+          kicad-cli pcb export pos --format csv --units mm --side both             -o "$OUT/wake-led-board-reva-cpl.csv" "$PCB"
+
+          cp hardware/assembly/wake-led-board-reva-bom.csv "$OUT/wake-led-board-reva-bom.csv"
+
+          echo "=== MASK FILES ==="
+          find "$GER" -maxdepth 1 -type f -print | sort
+          test -s "$GER/wake-led-board-reva-B_Mask.gbs" ||             test -s "$GER/wake-led-board-reva-B_Mask.gbr" ||             (echo "Bottom solder mask file missing/empty" && exit 1)
+
+          (
+            cd "$GER"
+            zip -9 "../wake-led-board-reva-PCBWay-Gerbers.zip" ./*
+          )
+
+      - name: Upload Wake LED package
+        uses: actions/upload-artifact@v4
+        with:
+          name: enku-clock-wake-led-pcbway
+          path: production/wake-led/
+          if-no-files-found: error
+          retention-days: 30
