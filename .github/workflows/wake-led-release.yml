@@ -44,7 +44,7 @@ jobs:
 
           echo "=== MASK FILES ==="
           find "$GER" -maxdepth 1 -type f -print | sort
-          test -s "$GER/wake-led-board-reva-B_Mask.gbs" ||             test -s "$GER/wake-led-board-reva-B_Mask.gbr" ||             (echo "Bottom solder mask file missing/empty" && exit 1)
+          test -s "$GER/wake-led-board-reva-b_mask.gbs" ||             test -s "$GER/wake-led-board-reva-b_mask.gbr" ||             (echo "Bottom solder mask file missing/empty" && exit 1)
 
           (
             cd "$GER"
