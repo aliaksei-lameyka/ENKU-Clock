@@ -2,6 +2,13 @@ name: Hardware check
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'hardware/mainboard/**'
+      - 'hardware/assembly/mainboard-reva-bom.csv'
+      - 'hardware/libraries/**'
+      - '.github/workflows/hardware-check.yml'
 
 jobs:
   kicad:
