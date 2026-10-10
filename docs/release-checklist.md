@@ -50,11 +50,12 @@ Generated Gerbers, drill files, CPL and release ZIPs must come from a known sour
 
 ## Current audited manufacturing snapshot
 
-Validated hardware source revision: **1c3d2e55** (`fix(hardware): remove audio via-in-pad and correct wake LED polarity marks`).
+Current green release-candidate source: **ed9ddd1** (`fix(bom): lock Rev A sourcing-critical part numbers`). Hardware geometry baseline: **1c3d2e55**.
 
 - Mainboard source DRC: **0 violations / 0 unconnected**
 - Daughterboards: **0 violations / 0 unconnected**
 - Mainboard BOM ↔ CPL: **78 / 78 references, no missing or extra refs**
+- Mainboard ↔ daughterboard harness audit: Encoder **5/5**, Snooze **3/3**, Wake LED **2/2** pin meanings match exactly for straight-through cables.
 - Remote controls now have populated 10 kΩ external pull-ups on ENC_A / ENC_B / ENC_SW / SNOOZE_SW; Snooze also has a populated 10 nF hardware filter. Encoder RC capacitors remain omitted and debounce stays in firmware.
 - USB-C J1 is now oriented with its mating face at the board edge; no J1 via-in-pad remains.
 - U6 MAX98357A via-in-pad has been eliminated. The exposed pad remains on solid top-layer GND copper and exits to a normal adjacent GND through-via outside the thermal pad, so no special filled/capped via-in-pad process is required for U6.

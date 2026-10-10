@@ -165,3 +165,16 @@ Quadrature rotation itself is not required to wake the device in the first firmw
 - J5 uses Molex 54550-2472. Molex classifies 54550-series **72** tape-pack variants as right-angle ZIF **top-contact** connectors. The GDEY037T03-FL21 panel sample/FPC must be checked physically for exposed-conductor side before assembly release.
 - J6 uses Molex 54550-0672, likewise a **top-contact** 0.5 mm ZIF connector. Do not approve an arbitrary substitute; replacement must preserve contact side, 0.5 mm pitch, pin count, pad pattern, insertion direction, actuator envelope, and mating FPC thickness.
 - If the production display/frontlight FPC presents contacts on the opposite side, change the connector family or mechanical orientation before PCB release; do not solve this by flipping logical pin numbering.
+
+
+## Straight-through harness audit
+
+The current Rev A PCB sources were compared pin-by-pin. The internal harnesses are intentionally straight-through and the logical meaning of each pin matches at both board ends:
+
+| Harness | Mainboard | Daughterboard | Result |
+|---|---|---|---|
+| Encoder | J3: 1 GND, 2 ENC_A, 3 ENC_B, 4 ENC_SW, 5 GND | J1: same order | PASS |
+| Snooze | J4: 1 GND, 2 SNOOZE_SW, 3 GND | J1: same order | PASS |
+| Wake LED | J8: 1 +3V3, 2 WAKE_LED_RETURN | J1: same order | PASS |
+
+Do not use a cable assembly that reverses conductor order end-to-end. Pin numbering, not visual wire position, is authoritative.

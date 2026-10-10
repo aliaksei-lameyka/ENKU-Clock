@@ -11,6 +11,7 @@
 - unconnected items: 0 at final production gate
 - four-layer fabrication package: generated successfully
 - BOM / CPL cross-check: pass, **78 / 78 references**
+- daughterboard harness map: pass, straight-through pin meanings match for Encoder / Snooze / Wake LED
 - remote controls: 10 kΩ external pull-ups populated on encoder A/B/SW and Snooze; Snooze also has 10 nF hardware filtering
 - MAX98357A exposed-pad via-in-pad removed; EP exits to adjacent GND via outside the pad
 - sourcing BOM locked for VEML7700-TR, AO3400A and exact JST/Molex connector MPNs

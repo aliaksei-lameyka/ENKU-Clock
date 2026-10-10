@@ -4,12 +4,13 @@
 
 An earlier ENKU Clock Rev A package has been submitted for prototype DFM / assembly review. The current audited Mainboard source supersedes that upload and must be re-exported / re-uploaded before payment.
 
-The current audited hardware source revision **1c3d2e55** passed native KiCad validation with:
+The current green release-candidate source **ed9ddd1** (hardware geometry baseline **1c3d2e55**) passed native KiCad validation with:
 
 - 0 hard DRC violations
 - 0 unconnected items
 - 0 footprint errors in the final production gate
 - BOM / CPL reference match on the Mainboard: **78 / 78 references**
+- straight-through harness pin maps match between Mainboard and Encoder (5/5), Snooze (3/3), and Wake LED (2/2)
 
 ## Board set
 
