@@ -56,4 +56,7 @@ Generated Gerbers, drill files, CPL and release ZIPs must come from a known sour
 - USB-C J1 is now oriented with its mating face at the board edge; no J1 via-in-pad remains.
 - U6 MAX98357A exposed-pad ground via remains a fabrication gate: filled/capped/plated-over via-in-pad (IPC-4761 Type VII or fabricator equivalent) is preferred to prevent solder loss.
 - J5/J6 top-contact FPC orientation remains a physical sample gate.
+- Exact GDEY037T03-FL21 reference-circuit audit: MBR0530 diode class, SI1308EDL MOSFET class, 10 uH / 3.0 x 3.0 x 1.5 mm EPD inductor class, and >=25 V X5R/X7R HV capacitor requirements are matched. Current HV capacitors are 50 V.
+- L_EPD is now locked to Wurth 74438335100 (10 uH, 3.0 x 3.0 x 1.5 mm, 1.25 A rated, 2 A saturation class) with the manufacturer land pattern embedded in the PCB.
+- GDEY037T03-FL21 / UC8253 BUSY is active-low during controller activity; firmware bring-up must use this polarity.
 - Do not pay or release the existing PCBWay Mainboard order until the Gerber, BOM and CPL are replaced by the current audited set and PCBWay re-runs DFM/assembly review.
