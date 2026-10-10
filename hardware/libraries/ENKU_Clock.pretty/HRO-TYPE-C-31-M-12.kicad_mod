@@ -110,12 +110,14 @@
 		(at -3.225 -4.045)
 		(size 0.6 1.45)
 		(layers "F.Cu" "F.Paste" "F.Mask")
+		(clearance 0.15)
 		(uuid "20dec0c1-d671-443b-96de-d296a0d2714f")
 	)
 	(pad "A4" smd rect
 		(at -2.45 -4.045)
 		(size 0.6 1.45)
 		(layers "F.Cu" "F.Paste" "F.Mask")
+		(clearance 0.15)
 		(uuid "72128a63-ee7b-406f-87e2-a8ac743bf2e0")
 	)
 	(pad "A5" smd rect
@@ -146,12 +148,14 @@
 		(at 2.45 -4.045)
 		(size 0.6 1.45)
 		(layers "F.Cu" "F.Paste" "F.Mask")
+		(clearance 0.15)
 		(uuid "c2525559-1ca7-443c-a2e0-7d69fb339fdd")
 	)
 	(pad "A12" smd rect
 		(at 3.225 -4.045)
 		(size 0.6 1.45)
 		(layers "F.Cu" "F.Paste" "F.Mask")
+		(clearance 0.15)
 		(uuid "82e4cd17-c904-46f0-8731-315e45afd7b4")
 	)
 	(pad "B5" smd rect
