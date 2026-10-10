@@ -4,7 +4,7 @@
 
 An earlier ENKU Clock Rev A package has been submitted for prototype DFM / assembly review. The current audited Mainboard source supersedes that upload and must be re-exported / re-uploaded before payment.
 
-The current audited source revision **2f6e8ed** passed native KiCad validation with:
+The current audited hardware source revision **1c3d2e55** passed native KiCad validation with:
 
 - 0 hard DRC violations
 - 0 unconnected items
@@ -47,7 +47,9 @@ Functional component substitutions must not be made without review. Critical gro
 - E Ink power / interface components
 - service connectors
 
-Where via-in-pad is used in SMT pads, filled/capped treatment suitable for assembly is required. The fabricator should confirm the exact process during DFM review.
+Exact sourcing constraints and the old PCBWay quotation findings are recorded in `docs/pcbway-sourcing-reva.md`.
+
+The former U6 MAX98357A exposed-pad via-in-pad has been removed. Its exposed pad now connects through solid F.Cu ground to a normal through-via outside the thermal pad, avoiding solder-wicking and special via-fill requirements at U6.
 
 ## Manufacturing files
 

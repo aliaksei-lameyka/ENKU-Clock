@@ -50,16 +50,18 @@ Generated Gerbers, drill files, CPL and release ZIPs must come from a known sour
 
 ## Current audited manufacturing snapshot
 
-Validated source revision: **2f6e8ed** (`fix(mainboard): relocate Snooze filter below J4`).
+Validated hardware source revision: **1c3d2e55** (`fix(hardware): remove audio via-in-pad and correct wake LED polarity marks`).
 
 - Mainboard source DRC: **0 violations / 0 unconnected**
 - Daughterboards: **0 violations / 0 unconnected**
 - Mainboard BOM ↔ CPL: **78 / 78 references, no missing or extra refs**
 - Remote controls now have populated 10 kΩ external pull-ups on ENC_A / ENC_B / ENC_SW / SNOOZE_SW; Snooze also has a populated 10 nF hardware filter. Encoder RC capacitors remain omitted and debounce stays in firmware.
 - USB-C J1 is now oriented with its mating face at the board edge; no J1 via-in-pad remains.
-- U6 MAX98357A exposed-pad ground via remains a fabrication gate: filled/capped/plated-over via-in-pad (IPC-4761 Type VII or fabricator equivalent) is preferred to prevent solder loss.
-- J5/J6 top-contact FPC orientation remains a physical sample gate.
+- U6 MAX98357A via-in-pad has been eliminated. The exposed pad remains on solid top-layer GND copper and exits to a normal adjacent GND through-via outside the thermal pad, so no special filled/capped via-in-pad process is required for U6.
+- J5/J6 are locked to Molex 54550-2472 / 54550-0672 TOP-CONTACT parts. The connector contact style is verified; the GDEY037T03-FL21 display/frontlight FPC exposed-conductor side remains a physical panel-sample gate.
 - Exact GDEY037T03-FL21 reference-circuit audit: MBR0530 diode class, SI1308EDL MOSFET class, 10 uH / 3.0 x 3.0 x 1.5 mm EPD inductor class, and >=25 V X5R/X7R HV capacitor requirements are matched. Current HV capacitors are 50 V.
 - L_EPD is now locked to Wurth 74438335100 (10 uH, 3.0 x 3.0 x 1.5 mm, 1.25 A rated, 2 A saturation class) with the manufacturer land pattern embedded in the PCB.
 - GDEY037T03-FL21 / UC8253 BUSY is active-low during controller activity; firmware bring-up must use this polarity.
+- Wake LED D1-D6 electrical polarity is pad 2 = anode / resistor / +3V3, pad 1 = cathode / WAKE_LED_RETURN. The cathode silkscreen marker is corrected and the accidental one-off D3 backside mask opening is removed.
+- PCBWay sourcing gates are tracked in `docs/pcbway-sourcing-reva.md`: J6 exact Molex is out of stock in the old quote, Nichia wake LEDs are out of stock, VEML7700 is locked to -TR, and AO3400A substitutions require explicit approval.
 - Do not pay or release the existing PCBWay Mainboard order until the Gerber, BOM and CPL are replaced by the current audited set and PCBWay re-runs DFM/assembly review.
