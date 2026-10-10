@@ -32,6 +32,29 @@ jobs:
           mkdir -p reports
           kicad-cli pcb drc --refill-zones --severity-error --exit-code-violations             -o reports/mainboard-drc.rpt             hardware/mainboard/mainboard-reva.kicad_pcb
 
+      - name: Export Mainboard manufacturing audit
+        run: |
+          set -euo pipefail
+          PCB="hardware/mainboard/mainboard-reva.kicad_pcb"
+          OUT="production/mainboard"
+          GER="$OUT/gerbers"
+          mkdir -p "$GER"
+
+          kicad-cli pcb export gerbers             --layers F.Cu,In1.Cu,In2.Cu,B.Cu,F.Mask,B.Mask,F.Paste,B.Paste,F.Silkscreen,B.Silkscreen,Edge.Cuts             -o "$GER/" "$PCB"
+          kicad-cli pcb export drill --format excellon --excellon-units mm -o "$GER/" "$PCB"
+          kicad-cli pcb export pos --format csv --units mm --side both             -o "$OUT/mainboard-reva-cpl.csv" "$PCB"
+          cp hardware/assembly/mainboard-reva-bom.csv "$OUT/mainboard-reva-bom.csv"
+
+          test -s "$GER/mainboard-reva-F_Cu.gtl" || (echo "Missing top copper" && exit 1)
+          test -s "$GER/mainboard-reva-B_Cu.gbl" || (echo "Missing bottom copper" && exit 1)
+          test -s "$GER/mainboard-reva-F_Mask.gts" || test -s "$GER/mainboard-reva-f_mask.gts" || (echo "Missing top mask" && exit 1)
+          test -s "$GER/mainboard-reva-B_Mask.gbs" || test -s "$GER/mainboard-reva-b_mask.gbs" || (echo "Missing bottom mask" && exit 1)
+
+          echo "=== Mainboard fabrication files ==="
+          find "$GER" -maxdepth 1 -type f -printf '%f %s bytes\n' | sort
+          echo "=== Mainboard CPL ==="
+          cat "$OUT/mainboard-reva-cpl.csv"
+
       - name: Daughterboard DRC
         run: |
           set -euo pipefail
@@ -48,3 +71,12 @@ jobs:
           name: enku-clock-hardware-reports
           path: reports/
           if-no-files-found: ignore
+
+      - name: Upload Mainboard manufacturing audit
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: enku-clock-mainboard-manufacturing-audit
+          path: production/mainboard/
+          if-no-files-found: error
+          retention-days: 30
