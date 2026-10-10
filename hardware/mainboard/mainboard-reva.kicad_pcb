@@ -418,11 +418,14 @@
   )
 
 
-  (footprint "Inductor_SMD:L_3.0x3.0mm_H1.5mm" (layer "F.Cu") (at 30 35)
+  (footprint "ENKU_Clock:WE-MAPI_3015_74438335100" (layer "F.Cu") (at 30 35)
     (property "Reference" "L_EPD" (at 0 -2.2) (layer "F.SilkS"))
-    (property "Value" "10uH >=1A" (at 0 2.2) (layer "F.Fab") hide)
-    (pad "1" smd rect (at -1.2 0) (size 1.2 2.4) (layers "F.Cu" "F.Paste" "F.Mask") (net 6 "+3V3"))
-    (pad "2" smd rect (at 1.2 0) (size 1.2 2.4) (layers "F.Cu" "F.Paste" "F.Mask") (net 54 "EPD_SW"))
+    (property "Value" "74438335100 10uH" (at 0 2.2) (layer "F.Fab") hide)
+    (attr smd)
+    (fp_rect (start -1.5 -1.5) (end 1.5 1.5) (stroke (width 0.1) (type default)) (fill none) (layer "F.Fab"))
+    (fp_rect (start -1.7 -1.7) (end 1.7 1.7) (stroke (width 0.05) (type default)) (fill none) (layer "F.CrtYd"))
+    (pad "1" smd rect (at -1.05 0) (size 1.3 3.4) (layers "F.Cu" "F.Paste" "F.Mask") (net 6 "+3V3"))
+    (pad "2" smd rect (at 1.05 0) (size 1.3 3.4) (layers "F.Cu" "F.Paste" "F.Mask") (net 54 "EPD_SW"))
   )
 
   (footprint "Package_TO_SOT_SMD:SOT-323_SC-70" (layer "F.Cu") (at 34.5 35)
