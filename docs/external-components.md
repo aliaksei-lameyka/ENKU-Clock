@@ -127,7 +127,7 @@ The following are **not missing external parts** because they are already includ
 - encoder / Snooze / Wake LED board-side connectors
 - Encoder EC11E15244G1
 - Snooze KSC221GLFS
-- six Nichia NFSW757G-V3 2700 K wake LEDs
+- six Nichia **NFSW757GT-V3 sm275/P11d21-P12d22/K22-L12/R8000** 2700 K CRI80 wake LEDs
 - Wake LED current-setting resistors
 
 ## Procurement gate before final assembly
@@ -150,3 +150,15 @@ Before closing the Rev A prototype kit, confirm that the following physically ex
 ## Production note
 
 Rev A external selections are prototype locks, not automatic production locks. Speaker, battery, harness supplier and optical parts must be validated in the assembled enclosure before volume sourcing.
+
+
+## Wake LED prototype sourcing
+
+Rev A uses the exact Nichia **NFSW757GT-V3 R8000 2700 K** bin recorded in the Wake LED BOM. A current European prototype source is LEDRise/Lumitronix SKU **33465**.
+
+For five clocks:
+- fitted quantity: 30 LEDs;
+- preferred purchase: **40 LEDs** from one lot;
+- sourcing snapshot: EUR 0.17 each, so 40 LEDs are about **EUR 6.80** before shipping/tax.
+
+Because the Wake LED board contains only one JST connector, six resistors and six LEDs, local single-pass reflow of the whole board is preferred over paying a separate PCBA setup merely to work around PCBWay's unavailable Nichia stock. A stencil / controlled paste deposit is preferred to iron-soldering the LEDs.

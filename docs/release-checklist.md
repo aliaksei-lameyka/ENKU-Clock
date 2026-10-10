@@ -64,5 +64,5 @@ Current green release-candidate source: **ed9ddd1** (`fix(bom): lock Rev A sourc
 - L_EPD is now locked to Wurth 74438335100 (10 uH, 3.0 x 3.0 x 1.5 mm, 1.25 A rated, 2 A saturation class) with the manufacturer land pattern embedded in the PCB.
 - GDEY037T03-FL21 / UC8253 BUSY is active-low during controller activity; firmware bring-up must use this polarity.
 - Wake LED D1-D6 electrical polarity is pad 2 = anode / resistor / +3V3, pad 1 = cathode / WAKE_LED_RETURN. The cathode silkscreen marker is corrected and the accidental one-off D3 backside mask opening is removed.
-- PCBWay sourcing gates are tracked in `docs/pcbway-sourcing-reva.md`: J6 exact Molex is out of stock in the old quote, Nichia wake LEDs are out of stock, VEML7700 is locked to -TR, and AO3400A substitutions require explicit approval.
+- PCBWay sourcing gates are tracked in `docs/pcbway-sourcing-reva.md`: J6 has a genuine 54550-0671 Rev A fallback / DNP path; Wake LEDs are locked to stocked Nichia NFSW757GT-V3 R8000 2700 K (LEDRise SKU 33465) for local fit; VEML7700 is locked to -TR; AO3400A substitutions require explicit approval.
 - Do not pay or release the existing PCBWay Mainboard order until the Gerber, BOM and CPL are replaced by the current audited set and PCBWay re-runs DFM/assembly review.

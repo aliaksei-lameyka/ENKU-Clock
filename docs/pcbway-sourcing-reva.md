@@ -52,11 +52,13 @@ This file records sourcing decisions that must be checked against PCBWay's **new
 
 ### Wake LED D1-D6
 
-- Required family: **Nichia NFSW757G-V3**, 3 x 3 mm.
-- Target CCT: **2700 K**.
-- For prototypes, a single consistent CRI/rank must be declared across all six LEDs; R8000 or R9050 2700 K are technically available in the Nichia family, but the exact ordered rank must be approved before purchase.
-- PCBWay's old quote reported NFSW757G-V3 **out of stock**.
-- Do not accept an arbitrary “3030 warm white” replacement. If exact Nichia sourcing is uneconomic, leave D1-D6 DNP and assemble the Wake LED board locally with user-supplied LEDs.
+- Rev A prototype is now locked to **Nichia NFSW757GT-V3 sm275/P11d21-P12d22/K22-L12/R8000**, 2700 K, CRI80, 3 x 3 x 0.65 mm.
+- Distributor reference: **LEDRise SKU 33465**. The sourcing snapshot used for this lock showed stock in Germany (>1000 pcs) at EUR 0.17 each through the official Nichia distribution channel; availability and price must be rechecked at purchase time.
+- PCBWay's old quote reported generic NFSW757G-V3 **out of stock**, therefore PCBWay should not substitute the LED.
+- Preferred Rev A build method: order Wake LED PCBs bare (or DNP D1-D6) and fit the exact Nichia LEDs locally. For a five-clock batch, 30 LEDs are required; **40 pcs** is the preferred prototype buy to keep 10 spares from the same lot.
+- Nichia **NFSW757G-P5V1** is a current recommended 757-series device and has the same nominal package size / recommended land-pattern dimensions, but its datasheet uses a different cathode-orientation rule from the V3 datasheet. It is therefore **not approved as a blind drop-in** on the Rev A footprint; using it requires a deliberate footprint/polarity ECO and validation.
+- Nichia NFSW757G-V3 (Rs030) keeps the V3 package family but has substantially lower luminous flux and a special-color-rendering spectrum, so it is not the preferred Wake-light prototype part.
+- Do not accept an arbitrary “3030 warm white” replacement.
 
 ## Items already acceptable in the old quote, subject to re-quote
 
