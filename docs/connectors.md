@@ -28,7 +28,7 @@ Recommended logical order:
 4. ENC_SW
 5. GND
 
-Grounds on both cable edges are intentional. Rev A does **not** populate external pull-ups on ENC_A / ENC_B / ENC_SW; firmware must enable the ESP32-S3 internal pull-ups before sampling these active-low contacts.
+Grounds on both cable edges are intentional. Rev A populates 10 kΩ external pull-ups on ENC_A / ENC_B / ENC_SW. Firmware should still debounce the mechanical encoder in software; no encoder RC capacitors are populated.
 
 ## Snooze connector
 
@@ -36,7 +36,7 @@ Grounds on both cable edges are intentional. Rev A does **not** populate externa
 2. SNOOZE_SW
 3. GND
 
-The dual-ground arrangement is intentional. Rev A does **not** populate an external pull-up or debounce capacitor on SNOOZE_SW; firmware must configure an internal pull-up. For deep-sleep wake, the RTC-IO pull/hold state must be configured before sleep.
+The dual-ground arrangement is intentional. Rev A populates a 10 kΩ external pull-up and 10 nF shunt capacitor on SNOOZE_SW, giving a 100 µs hardware RC time constant for EMI suppression and clean wake-state bias.
 
 ## Wake-light connector
 
