@@ -28,7 +28,7 @@ Recommended logical order:
 4. ENC_SW
 5. GND
 
-Grounds on both cable edges are intentional. Pull-ups remain on the Mainboard.
+Grounds on both cable edges are intentional. Rev A does **not** populate external pull-ups on ENC_A / ENC_B / ENC_SW; firmware must enable the ESP32-S3 internal pull-ups before sampling these active-low contacts.
 
 ## Snooze connector
 
@@ -36,7 +36,7 @@ Grounds on both cable edges are intentional. Pull-ups remain on the Mainboard.
 2. SNOOZE_SW
 3. GND
 
-The dual-ground arrangement is intentional.
+The dual-ground arrangement is intentional. Rev A does **not** populate an external pull-up or debounce capacitor on SNOOZE_SW; firmware must configure an internal pull-up. For deep-sleep wake, the RTC-IO pull/hold state must be configured before sleep.
 
 ## Wake-light connector
 
@@ -78,14 +78,13 @@ GPIO19/20 are not shared with other functions.
 | Function | GPIO |
 |---|---:|
 | BAT_ADC | GPIO1 |
-| BAT_ADC_EN | GPIO2 |
 | RTC_INT | GPIO4 |
 | SNOOZE_SW | GPIO5 |
 | ENC_A | GPIO6 |
 | ENC_B | GPIO7 |
 | ENC_SW | GPIO8 |
 
-GPIO0 and GPIO3 are deliberately avoided for user controls because of strapping roles.
+GPIO0 and GPIO3 are deliberately avoided for user controls because of strapping roles. GPIO2 is currently unallocated; the former BAT_ADC_EN function was removed because the battery divider is intentionally always-on.
 
 ### I2C
 
