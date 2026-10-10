@@ -158,7 +158,8 @@
     (pad "14" smd roundrect (at 0.25 -1.4) (size 0.24 0.6) (layers "F.Cu" "F.Mask" "F.Paste") (roundrect_rratio 0.25) (net 62 "CHG_TMR"))
     (pad "15" smd roundrect (at -0.25 -1.4) (size 0.24 0.6) (layers "F.Cu" "F.Mask" "F.Paste") (roundrect_rratio 0.25))
     (pad "16" smd roundrect (at -0.75 -1.4) (size 0.24 0.6) (layers "F.Cu" "F.Mask" "F.Paste") (roundrect_rratio 0.25) (net 61 "CHG_ISET"))
-    (pad "17" smd rect (at 0 0) (size 1.7 1.7) (layers "F.Cu" "F.Mask" "F.Paste") (net 1 "GND"))
+    (pad "17" smd rect (at 0 0) (size 1.68 1.68) (layers "F.Cu" "F.Mask") (net 1 "GND"))
+    (pad "" smd rect (at 0 0) (size 1.55 1.55) (layers "F.Paste"))
   )
 
   (footprint "ENKU_Clock:TPS62840_DLC0008B" (layer "F.Cu") (at 30 12)
