@@ -245,6 +245,26 @@ Wire Wire Line
 Text GLabel 6850 3950 2 50 Input ~ 0
 GND
 $Comp
+L Device:C C_IN
+U 1 1 A2000018
+P 7600 4050
+F 0 "C_IN" H 7715 4096 50 0000 L CNN
+F 1 "1uF/10V local IN bypass" H 7715 4005 50 0000 L CNN
+	1    7600 4050
+	1 0 0 -1
+$EndComp
+Wire Wire Line
+	7600 3900 7600 3750
+Text GLabel 7600 3750 1 50 Input ~ 0
+VBUS_USB
+Wire Wire Line
+	7600 4200 7600 4350
+Text GLabel 7600 4350 3 50 Input ~ 0
+GND
+Text Notes 7350 4550 0 45 ~ 0
+C_IN is the local BQ24074 IN bypass and must stay physically close to U2 IN/GND.
+
+$Comp
 L Device:C C2
 U 1 1 A2000013
 P 7000 4500
