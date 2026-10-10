@@ -2,7 +2,7 @@
 
 ## Rev A
 
-**Hardware:** prototype package submitted for DFM / assembly review.
+**Hardware:** an earlier prototype package was submitted for DFM / assembly review, but the audited Mainboard source has since advanced. The current package must replace the earlier PCBWay upload before payment.
 
 ### Mainboard
 
@@ -10,7 +10,8 @@
 - native KiCad hard DRC: pass
 - unconnected items: 0 at final production gate
 - four-layer fabrication package: generated successfully
-- BOM / CPL cross-check: pass
+- BOM / CPL cross-check: pass, **78 / 78 references**
+- remote controls: 10 kΩ external pull-ups populated on encoder A/B/SW and Snooze; Snooze also has 10 nF hardware filtering
 - physical bring-up: pending fabricated hardware
 
 ### Encoder board

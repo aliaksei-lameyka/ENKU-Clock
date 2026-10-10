@@ -2,14 +2,14 @@
 
 ## Current stage
 
-ENKU Clock Rev A has been submitted for prototype DFM / assembly review.
+An earlier ENKU Clock Rev A package has been submitted for prototype DFM / assembly review. The current audited Mainboard source supersedes that upload and must be re-exported / re-uploaded before payment.
 
-The checked source state used for the first submission passed native KiCad validation with:
+The current audited source revision **2f6e8ed** passed native KiCad validation with:
 
 - 0 hard DRC violations
 - 0 unconnected items
 - 0 footprint errors in the final production gate
-- BOM / CPL reference match on the Mainboard
+- BOM / CPL reference match on the Mainboard: **78 / 78 references**
 
 ## Board set
 
@@ -36,6 +36,8 @@ Rev A does not claim controlled impedance for USB Full-Speed.
 ## Assembly notes
 
 The first prototype batch is intended for top-side assembly.
+
+Rev A remote-control conditioning is now hardware-defined: 10 kΩ pull-ups on ENC_A / ENC_B / ENC_SW / SNOOZE_SW and 10 nF from SNOOZE_SW to GND. Encoder debounce remains firmware-side.
 
 Functional component substitutions must not be made without review. Critical groups include:
 

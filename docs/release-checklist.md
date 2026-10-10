@@ -23,7 +23,7 @@ A hardware release is considered manufacturing-ready only when the checked sourc
 - [x] BOM / CPL reference cross-check passed
 - [x] daughterboard production artifacts generated
 - [ ] current audited prototype package submitted for fabricator review
-  - Previous PCBWay upload predates the final SI1308EDL, BQ24074, USB-C and BOM corrections and must be replaced before payment.
+  - Previous PCBWay upload predates the final SI1308EDL, BQ24074, USB-C, EPD BOM and remote-input conditioning corrections and must be replaced before payment.
 
 ## Still required before calling Rev A physically validated
 
@@ -50,9 +50,12 @@ Generated Gerbers, drill files, CPL and release ZIPs must come from a known sour
 
 ## Current audited manufacturing snapshot
 
+Validated source revision: **2f6e8ed** (`fix(mainboard): relocate Snooze filter below J4`).
+
 - Mainboard source DRC: **0 violations / 0 unconnected**
 - Daughterboards: **0 violations / 0 unconnected**
-- Mainboard BOM ↔ CPL: **73 / 73 references, no missing or extra refs**
+- Mainboard BOM ↔ CPL: **78 / 78 references, no missing or extra refs**
+- Remote controls now have populated 10 kΩ external pull-ups on ENC_A / ENC_B / ENC_SW / SNOOZE_SW; Snooze also has a populated 10 nF hardware filter. Encoder RC capacitors remain omitted and debounce stays in firmware.
 - USB-C J1 is now oriented with its mating face at the board edge; no J1 via-in-pad remains.
 - U6 MAX98357A exposed-pad ground via remains a fabrication gate: filled/capped/plated-over via-in-pad (IPC-4761 Type VII or fabricator equivalent) is preferred to prevent solder loss.
 - J5/J6 top-contact FPC orientation remains a physical sample gate.
