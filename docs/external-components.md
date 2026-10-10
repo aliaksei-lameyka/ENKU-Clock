@@ -32,11 +32,10 @@ Rev A electrical interface is already designed for this display family.
 
 Key requirements to verify on the physical sample before production:
 
-1. 24-pin FPC exposed-contact side and insertion orientation;
-2. 6-pin frontlight FPC exposed-contact side;
-3. frontlight conductor order;
-4. warm-white LED option / requested CCT;
-5. mechanical outline and FPC exit relative to enclosure CAD.
+1. physical confirmation that the production sample matches the currently documented front-side exposed-contact orientation for both FPC tails;
+2. frontlight conductor order;
+3. warm-white LED option / requested CCT;
+4. mechanical outline and FPC exit relative to enclosure CAD.
 
 The bonded frontlight should be purchased as part of the complete display assembly; it is not treated as a separate ENKU-installed optical layer.
 
