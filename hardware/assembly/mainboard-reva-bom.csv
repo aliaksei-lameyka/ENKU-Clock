@@ -2,6 +2,7 @@ Designator,Quantity,Value,Footprint,Assembly note
 "C_ALS1,C_AUD1,C_MCU1,C_RTC,C10",5,"100nF","Capacitor_SMD:C_0603_1608Metric",""
 "C_AUD2,C_MCU2,C5",3,"10uF","Capacitor_SMD:C_0805_2012Metric",""
 "C_EN",1,"1uF","Capacitor_SMD:C_0603_1608Metric",""
+"C_IN",1,"1uF/10V","Capacitor_SMD:C_0603_1608Metric","Local BQ24074 IN bypass; place close to U2 IN/GND"
 "C_EPDIN,C_PUMP",2,"4.7uF/50V","Capacitor_SMD:C_0805_2012Metric",""
 "C_MCU3",1,"100uF low-ESR","Capacitor_SMD:C_1210_3225Metric",""
 "C_PREVGH,C_PREVGL,C_VCOM,C_VDD,C_VSH1,C_VSH2,C_VSL",7,"1uF/50V","Capacitor_SMD:C_0603_1608Metric",""
