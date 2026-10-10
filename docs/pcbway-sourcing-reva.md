@@ -25,8 +25,11 @@ This file records sourcing decisions that must be checked against PCBWay's **new
 - Required: **Molex 54550-0672**
 - 6 circuits, 0.5 mm pitch, 1.2 mm height, right-angle SMT ZIF, **TOP CONTACT**
 - PCBWay's old quote explicitly reported this part **out of stock**.
-- Preferred prototype handling: source the exact part. If PCBWay cannot source it, assemble J6 as DNP and hand-fit an exact 54550-0672 later.
-- No arbitrary substitute is approved.
+- **Rev A prototype alternate approved:** genuine **Molex 54550-0671**. It is obsolete for new production, but it has the same 6-position / 0.5 mm / 1.2 mm / right-angle / top-contact interface and the same recommended PCB land pattern; Molex/DigiKey list 54550-0672 as the manufacturer-recommended replacement for 54550-0671.
+- Production remains locked to **54550-0672**.
+- If PCBWay cannot source either genuine Molex part, populate J6 as **DNP** and hand-fit a genuine 54550-0671 or 54550-0672 locally.
+- Do **not** accept Würth 687106149022 as a drop-in: despite being surfaced by some distributor substitution tools, it is bottom-contact and 2.2 mm high.
+- No other substitute is approved.
 
 ### J8 — Wake LED harness
 
