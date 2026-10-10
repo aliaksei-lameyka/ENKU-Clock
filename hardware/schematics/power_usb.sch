@@ -234,7 +234,7 @@ L Device:R R_TMR
 U 1 1 A2000012
 P 6400 3950
 F 0 "R_TMR" V 6193 3950 50 0000 C CNN
-F 1 "46.4k / 6.25h" V 6284 3950 50 0000 C CNN
+F 1 "68k / ~9h typ" V 6284 3950 50 0000 C CNN
 	1    6400 3950
 	0 1 1 0
 $EndComp
@@ -301,7 +301,7 @@ GND
 Text Notes 2900 5200 0 50 ~ 0
 EN1=SYS_RAW, EN2=GND -> 500mA input current mode. ISET=1.13k gives ~0.8A charge ceiling; input limit wins on ordinary USB.
 Text Notes 2900 5350 0 50 ~ 0
-ITERM open = internal default termination. TS uses battery 10k NTC. CHG/PGOOD are open-drain and get pull-ups on MCU sheet.
+ITERM open = internal default termination. TMR=68k gives about 9.1h typical fast-charge safety timer, providing margin for a ~3Ah pack in USB500 mode. TS uses battery 10k NTC. CHG/PGOOD are open-drain and get pull-ups on MCU sheet.
 
 $Comp
 L ENKU_Clock:CONN_3 J2
