@@ -159,3 +159,10 @@ Quadrature rotation itself is not required to wake the device in the first firmw
 - speaker wiring should stay away from the encoder bundle where practical;
 - wake-light PWM return should not share a long thin return path with encoder signals;
 - battery wiring should remain short and mechanically protected.
+
+
+## Pre-production contact-side gate
+
+- J5 uses Molex 54550-2472. Molex classifies 54550-series **72** tape-pack variants as right-angle ZIF **top-contact** connectors. The GDEY037T03-FL21 panel sample/FPC must be checked physically for exposed-conductor side before assembly release.
+- J6 uses Molex 54550-0672, likewise a **top-contact** 0.5 mm ZIF connector. Do not approve an arbitrary substitute; replacement must preserve contact side, 0.5 mm pitch, pin count, pad pattern, insertion direction, actuator envelope, and mating FPC thickness.
+- If the production display/frontlight FPC presents contacts on the opposite side, change the connector family or mechanical orientation before PCB release; do not solve this by flipping logical pin numbering.
