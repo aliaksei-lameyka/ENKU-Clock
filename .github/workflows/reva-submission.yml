@@ -1,0 +1,197 @@
+name: Rev A submission package
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'hardware/mainboard/**'
+      - 'hardware/daughterboards/**'
+      - 'hardware/assembly/**'
+      - 'docs/pcbway-sourcing-reva.md'
+      - 'docs/reva-submission-manifest.md'
+      - '.github/workflows/reva-submission.yml'
+
+jobs:
+  package:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install KiCad 10 and packaging tools
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y software-properties-common zip
+          sudo add-apt-repository --yes ppa:kicad/kicad-10.0-releases
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends kicad
+          kicad-cli version
+
+      - name: Validate all Rev A boards
+        run: |
+          set -euo pipefail
+          mkdir -p production/reva-submission/reports
+          declare -A BOARDS=(
+            [mainboard]="hardware/mainboard/mainboard-reva.kicad_pcb"
+            [encoder]="hardware/daughterboards/encoder/encoder-board-reva.kicad_pcb"
+            [snooze]="hardware/daughterboards/snooze/snooze-board-reva.kicad_pcb"
+            [wake-led]="hardware/daughterboards/wake-led/wake-led-board-reva.kicad_pcb"
+          )
+          for name in mainboard encoder snooze wake-led; do
+            kicad-cli pcb drc --refill-zones --severity-error --exit-code-violations \
+              -o "production/reva-submission/reports/${name}-drc.rpt" "${BOARDS[$name]}"
+          done
+
+      - name: Export Mainboard PCBA package
+        run: |
+          set -euo pipefail
+          PCB="hardware/mainboard/mainboard-reva.kicad_pcb"
+          OUT="production/reva-submission/01-mainboard-PCBA"
+          GER="$OUT/gerbers"
+          mkdir -p "$GER"
+          kicad-cli pcb export gerbers \
+            --layers F.Cu,In1.Cu,In2.Cu,B.Cu,F.Mask,B.Mask,F.Paste,B.Paste,F.Silkscreen,B.Silkscreen,Edge.Cuts \
+            -o "$GER/" "$PCB"
+          kicad-cli pcb export drill --format excellon --excellon-units mm -o "$GER/" "$PCB"
+          kicad-cli pcb export pos --format csv --units mm --side both -o "$OUT/mainboard-reva-cpl.csv" "$PCB"
+          cp hardware/assembly/mainboard-reva-bom.csv "$OUT/mainboard-reva-bom.csv"
+          cp production/reva-submission/reports/mainboard-drc.rpt "$OUT/"
+          (cd "$GER" && zip -9 "../mainboard-reva-PCBWay-Gerbers.zip" ./*)
+
+      - name: Export Encoder PCBA package
+        run: |
+          set -euo pipefail
+          PCB="hardware/daughterboards/encoder/encoder-board-reva.kicad_pcb"
+          OUT="production/reva-submission/02-encoder-PCBA"
+          GER="$OUT/gerbers"
+          mkdir -p "$GER"
+          kicad-cli pcb export gerbers \
+            --layers F.Cu,B.Cu,F.Mask,B.Mask,F.Paste,B.Paste,F.Silkscreen,B.Silkscreen,Edge.Cuts \
+            -o "$GER/" "$PCB"
+          kicad-cli pcb export drill --format excellon --excellon-units mm -o "$GER/" "$PCB"
+          kicad-cli pcb export pos --format csv --units mm --side both -o "$OUT/encoder-board-reva-cpl.csv" "$PCB"
+          cp hardware/assembly/encoder-board-reva-bom.csv "$OUT/encoder-board-reva-bom.csv"
+          cp production/reva-submission/reports/encoder-drc.rpt "$OUT/"
+          (cd "$GER" && zip -9 "../encoder-board-reva-PCBWay-Gerbers.zip" ./*)
+
+      - name: Export Snooze PCBA package
+        run: |
+          set -euo pipefail
+          PCB="hardware/daughterboards/snooze/snooze-board-reva.kicad_pcb"
+          OUT="production/reva-submission/03-snooze-PCBA"
+          GER="$OUT/gerbers"
+          mkdir -p "$GER"
+          kicad-cli pcb export gerbers \
+            --layers F.Cu,B.Cu,F.Mask,B.Mask,F.Paste,B.Paste,F.Silkscreen,B.Silkscreen,Edge.Cuts \
+            -o "$GER/" "$PCB"
+          kicad-cli pcb export drill --format excellon --excellon-units mm -o "$GER/" "$PCB"
+          kicad-cli pcb export pos --format csv --units mm --side both -o "$OUT/snooze-board-reva-cpl.csv" "$PCB"
+          cp hardware/assembly/snooze-board-reva-bom.csv "$OUT/snooze-board-reva-bom.csv"
+          cp production/reva-submission/reports/snooze-drc.rpt "$OUT/"
+          (cd "$GER" && zip -9 "../snooze-board-reva-PCBWay-Gerbers.zip" ./*)
+
+      - name: Export Wake LED bare-PCB/local-assembly package
+        run: |
+          set -euo pipefail
+          PCB="hardware/daughterboards/wake-led/wake-led-board-reva.kicad_pcb"
+          OUT="production/reva-submission/04-wake-led-BARE-PCB"
+          GER="$OUT/gerbers"
+          LOCAL="$OUT/local-assembly"
+          mkdir -p "$GER" "$LOCAL"
+          kicad-cli pcb export gerbers \
+            --layers F.Cu,B.Cu,F.Mask,B.Mask,F.Silkscreen,B.Silkscreen,Edge.Cuts \
+            -o "$GER/" "$PCB"
+          kicad-cli pcb export drill --format excellon --excellon-units mm -o "$GER/" "$PCB"
+          kicad-cli pcb export gerbers --layers F.Paste -o "$LOCAL/" "$PCB"
+          kicad-cli pcb export pos --format csv --units mm --side both -o "$LOCAL/wake-led-board-reva-cpl.csv" "$PCB"
+          cp hardware/assembly/wake-led-board-reva-bom.csv "$LOCAL/wake-led-board-reva-bom.csv"
+          cp production/reva-submission/reports/wake-led-drc.rpt "$OUT/"
+          cat > "$OUT/README.txt" <<'EOF'
+          ORDER THIS DIRECTORY AS BARE PCB, NOT PCBWAY PCBA.
+
+          Board: ENKU Clock Wake LED Rev A
+          Size: 78 x 8 mm
+          Layers: 2
+          Thickness: 1.0 mm
+          Surface finish: ENIG
+
+          Local assembly:
+          - J1: JST SM02B-GHS-TB(LF)(SN)
+          - D1-D6: exact Nichia NFSW757GT-V3 sm275/P11d21-P12d22/K22-L12/R8000, 2700 K CRI80
+          - R1-R6: 56 ohm 1% 0603
+          - LED pad 1 = K/cathode = WAKE_LED_RETURN
+          - LED pad 2 = A/anode = resistor/+3V3
+          - Preferred build: stencil/paste + one local reflow pass
+          EOF
+          (cd "$GER" && zip -9 "../wake-led-board-reva-BARE-PCB-Gerbers.zip" ./*)
+
+      - name: Cross-check BOM and placement references
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import csv, re
+          from pathlib import Path
+
+          root = Path("production/reva-submission")
+          sets = [
+              ("mainboard", root/"01-mainboard-PCBA/mainboard-reva-bom.csv", root/"01-mainboard-PCBA/mainboard-reva-cpl.csv"),
+              ("encoder", root/"02-encoder-PCBA/encoder-board-reva-bom.csv", root/"02-encoder-PCBA/encoder-board-reva-cpl.csv"),
+              ("snooze", root/"03-snooze-PCBA/snooze-board-reva-bom.csv", root/"03-snooze-PCBA/snooze-board-reva-cpl.csv"),
+              ("wake-led", root/"04-wake-led-BARE-PCB/local-assembly/wake-led-board-reva-bom.csv", root/"04-wake-led-BARE-PCB/local-assembly/wake-led-board-reva-cpl.csv"),
+          ]
+
+          def expand(s):
+              return [x for x in re.split(r"[\s,]+", s.strip()) if x]
+
+          for name, bom_path, cpl_path in sets:
+              with bom_path.open(newline="", encoding="utf-8") as f:
+                  rows = list(csv.DictReader(f))
+              bom = set()
+              for row in rows:
+                  if row.get("Populate", "YES").strip().upper() == "NO":
+                      continue
+                  key = row.get("Designator") or row.get("Designators") or ""
+                  bom.update(expand(key))
+              with cpl_path.open(newline="", encoding="utf-8-sig") as f:
+                  crows = list(csv.DictReader(f))
+              cpl = set()
+              for row in crows:
+                  ref = row.get("Ref") or row.get("Reference") or row.get("Designator")
+                  if ref:
+                      cpl.add(ref.strip())
+              missing = sorted(bom-cpl)
+              extra = sorted(cpl-bom)
+              print(f"{name}: BOM={len(bom)} CPL={len(cpl)} missing={missing} extra={extra}")
+              if missing or extra:
+                  raise SystemExit(f"BOM/CPL mismatch for {name}")
+          PY
+
+      - name: Add release manifest and checksums
+        run: |
+          set -euo pipefail
+          ROOT="production/reva-submission"
+          cp docs/reva-submission-manifest.md "$ROOT/00-READ-ME-FIRST.md"
+          cp docs/pcbway-sourcing-reva.md "$ROOT/PCBWAY-SOURCING-GATES.md"
+          {
+            echo
+            echo "---"
+            echo "Generated from commit: ${GITHUB_SHA}"
+            echo "Generated by GitHub Actions run: ${GITHUB_RUN_ID}"
+          } >> "$ROOT/00-READ-ME-FIRST.md"
+          (
+            cd "$ROOT"
+            find . -type f ! -name SHA256SUMS.txt -print0 | sort -z | xargs -0 sha256sum > SHA256SUMS.txt
+          )
+          SHORT="${GITHUB_SHA::8}"
+          (cd production && zip -9 -r "ENKU-Clock-RevA-PCBWay-submission-${SHORT}.zip" reva-submission)
+
+      - name: Upload Rev A submission bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: enku-clock-reva-pcbway-submission
+          path: |
+            production/ENKU-Clock-RevA-PCBWay-submission-*.zip
+            production/reva-submission/
+          if-no-files-found: error
+          retention-days: 30
